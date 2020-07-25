@@ -1,11 +1,11 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import SiderContainer from "./components/SiderContainer";
+import RoomPage from "./components/RoomPage";
 
 const App = () => {
     return (
         <>
-            <SiderContainer/>
+            <RoomPage/>
         </>
     );
 };

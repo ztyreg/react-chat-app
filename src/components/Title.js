@@ -1,6 +1,5 @@
 import React from 'react';
 import {Button, PageHeader} from 'antd';
-import JoinChat from "./JoinChat";
 
 const Title = () => {
     return (

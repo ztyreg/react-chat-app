@@ -1,11 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
+import {Layout} from "antd";
+import SideBar from "./SideBar";
+import Title from "./Title";
+import RoomTable from "./RoomTable";
 
-const ChatPage = () => {
+const ChatPage = (props) => {
+    const [collapsed, setCollapsed] = useState(false);
+
+    const onCollapse = value => {
+        setCollapsed(value);
+    };
+
     return (
-        <div>
-            Test
-
-        </div>
+        <Layout style={{minHeight: '100vh'}}>
+            <SideBar collapsed={collapsed} onCollapse={onCollapse}/>
+            <Layout className="site-layout">
+            </Layout>
+        </Layout>
     );
 };
 
