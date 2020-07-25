@@ -4,7 +4,7 @@ import {
     PieChartOutlined,
     FileOutlined,
     TeamOutlined,
-    UserOutlined,
+    UserOutlined, MenuUnfoldOutlined, MenuFoldOutlined,
 } from '@ant-design/icons';
 import Title from "./Title";
 import RoomTable from "./RoomTable";
@@ -14,7 +14,6 @@ import SideBar from "./SideBar";
 
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
-
 
 
 class RoomPage extends React.Component {
