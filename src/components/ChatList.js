@@ -1,5 +1,6 @@
 import React from "react";
-import { Table, Button } from 'antd';
+import {Table, Button} from 'antd';
+import Actions from "./Actions";
 
 const columns = [
     {
@@ -33,7 +34,7 @@ class ChatList extends React.Component {
     };
 
     start = () => {
-        this.setState({ loading: true });
+        this.setState({loading: true});
         // ajax request after empty completing
         setTimeout(() => {
             this.setState({
@@ -45,11 +46,11 @@ class ChatList extends React.Component {
 
     onSelectChange = selectedRowKeys => {
         console.log('selectedRowKeys changed: ', selectedRowKeys);
-        this.setState({ selectedRowKeys });
+        this.setState({selectedRowKeys});
     };
 
     render() {
-        const { loading, selectedRowKeys } = this.state;
+        const {loading, selectedRowKeys} = this.state;
         const rowSelection = {
             selectedRowKeys,
             onChange: this.onSelectChange,
@@ -57,15 +58,15 @@ class ChatList extends React.Component {
         const hasSelected = selectedRowKeys.length > 0;
         return (
             <div>
-                <div style={{ marginBottom: 16 }}>
-                    <Button type="primary" onClick={this.start} disabled={!hasSelected} loading={loading}>
-                        Reload
-                    </Button>
-                    <span style={{ marginLeft: 8 }}>
+                <div style={{marginBottom: 16}}>
+                    <Button key={"1"} type={"primary"}>&nbsp;&nbsp;Join&nbsp;&nbsp;</Button>
+                    <Button key={"2"} style={{marginLeft: 8}}>Create</Button>
+                    <Button key={"3"} style={{marginLeft: 8}} danger>Delete</Button>
+                    <span style={{marginLeft: 8}}>
             {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
           </span>
                 </div>
-                <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+                <Table rowSelection={rowSelection} columns={columns} dataSource={data}/>
             </div>
         );
     }
