@@ -1,6 +1,6 @@
 import React from "react";
 import {Table, Button} from 'antd';
-import Actions from "./Actions";
+import Title from "./Title";
 
 const columns = [
     {
@@ -61,7 +61,7 @@ class ChatList extends React.Component {
                 <div style={{marginBottom: 16}}>
                     <Button key={"1"} type={"primary"}>&nbsp;&nbsp;Join&nbsp;&nbsp;</Button>
                     <Button key={"2"} style={{marginLeft: 8}}>Create</Button>
-                    <Button key={"3"} style={{marginLeft: 8}} danger>Delete</Button>
+                    <Button key={"3"} style={{marginLeft: 8, float: "right"}} danger>Delete</Button>
                     <span style={{marginLeft: 8}}>
             {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
           </span>

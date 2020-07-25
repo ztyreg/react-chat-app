@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import AppRouter from "./routers/AppRouter";
 
 ReactDOM.render(
     <React.StrictMode>
-        <App/>
+        <AppRouter/>
     </React.StrictMode>,
     document.getElementById('root')
 );
