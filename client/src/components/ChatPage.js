@@ -2,12 +2,15 @@ import React, {useEffect, useState} from "react";
 import {Affix, Layout} from "antd";
 import SideBar from "./SideBar";
 import Message from "./Message";
-import EditorForm from "./EditorForm";
 import socketIOClient from "socket.io-client";
+import {Input} from 'antd';
+
+const {Search} = Input;
+const {Content} = Layout;
+
 const ENDPOINT = "http://127.0.0.1:3001";
 
-
-const {Content} = Layout;
+let socket;
 
 const ChatPage = (props) => {
     const [collapsed, setCollapsed] = useState(false);
@@ -17,10 +20,27 @@ const ChatPage = (props) => {
         setCollapsed(value);
     };
 
+    const onSearch = (value) => {
+        socket.emit('sendMessage', 'TEST', (error) => {
+            if (error) {
+                return console.log(error)
+            }
+            console.log('Message delivered!')
+        });
+    };
+
     useEffect(() => {
-        const socket = socketIOClient(ENDPOINT);
+        socket = socketIOClient(ENDPOINT);
         socket.on("FromAPI", data => {
             console.log(data);
+        });
+
+        socket.emit('join', {}, (error) => {
+            console.log('callback');
+            // if (error) {
+            //     alert(error)
+            //     location.href = '/'
+            // }
         });
 
         // CLEAN UP THE EFFECT
@@ -37,7 +57,12 @@ const ChatPage = (props) => {
                     <Message/>
                 </Content>
                 <Affix offsetBottom={10} style={{marginLeft: '16px', marginRight: '16px'}}>
-                    <EditorForm/>
+                    <Search
+                        placeholder="Enter your message here"
+                        enterButton="Send"
+                        size="medium"
+                        onSearch={onSearch}
+                    />
                 </Affix>
             </Layout>
         </Layout>
