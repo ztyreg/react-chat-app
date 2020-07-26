@@ -1,9 +1,9 @@
 import {Layout, Menu} from "antd";
-import {DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
+import {DesktopOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
 import {Link, useRouteMatch, useLocation} from "react-router-dom";
 import React from "react";
 
-const {Header, Content, Footer, Sider} = Layout;
+const {Sider} = Layout;
 const {SubMenu} = Menu;
 
 const SideBar = (props) => {

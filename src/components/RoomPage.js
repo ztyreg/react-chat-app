@@ -1,20 +1,10 @@
-import {Layout, Menu, Breadcrumb} from 'antd';
-import {
-    DesktopOutlined,
-    PieChartOutlined,
-    FileOutlined,
-    TeamOutlined,
-    UserOutlined, MenuUnfoldOutlined, MenuFoldOutlined,
-} from '@ant-design/icons';
+import {Layout, Menu} from 'antd';
 import Title from "./Title";
 import RoomTable from "./RoomTable";
 import React from "react";
-import {Link} from "react-router-dom";
 import SideBar from "./SideBar";
 
-const {Header, Content, Footer, Sider} = Layout;
-const {SubMenu} = Menu;
-
+const {Content, Footer} = Layout;
 
 class RoomPage extends React.Component {
     state = {

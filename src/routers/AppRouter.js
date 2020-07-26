@@ -1,14 +1,16 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import React from "react";
-import App from "../App";
+import 'antd/dist/antd.css';
 import ChatPage from "../components/ChatPage";
+import RoomPage from "../components/RoomPage";
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
             <div>
                 <Switch>
-                    <Route path="/rooms" component={App} exact={true}/>
+                    <Route path="/" component={RoomPage} exact={true}/>
+                    <Route path="/rooms" component={RoomPage} exact={true}/>
                     <Route path="/chat" component={ChatPage}/>
                 </Switch>
             </div>

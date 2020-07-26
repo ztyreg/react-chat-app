@@ -1,13 +1,10 @@
 import React, {useState} from "react";
 import {Affix, Layout} from "antd";
 import SideBar from "./SideBar";
-import Title from "./Title";
-import RoomTable from "./RoomTable";
 import Message from "./Message";
 import EditorForm from "./EditorForm";
-import { Divider } from 'antd';
 
-const {Header, Content, Footer, Sider} = Layout;
+const {Content} = Layout;
 
 const ChatPage = (props) => {
     const [collapsed, setCollapsed] = useState(false);

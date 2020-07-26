@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {Form, Input, Button} from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import React from 'react';
+import {Input} from 'antd';
 
 const { Search } = Input;
 
