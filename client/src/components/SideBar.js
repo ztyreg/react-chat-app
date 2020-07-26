@@ -16,7 +16,13 @@ const SideBar = (props) => {
 
     return (
         <Sider collapsible collapsed={props.collapsed} onCollapse={props.onCollapse}>
-            <div>TEST</div>
+            <div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div>
             <Menu theme="dark" defaultSelectedKeys={[urlDefaultKeys[pathname]]} mode="inline">
                 <Menu.Item key="1" icon={<PieChartOutlined/>}>
                     <Link to={"/rooms"}>Rooms</Link>
