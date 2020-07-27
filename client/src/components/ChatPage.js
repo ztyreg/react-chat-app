@@ -18,8 +18,6 @@ const ChatPage = (props) => {
     const [data, setData] = useState([]);
 
     const addData = (message) => {
-        // console.log('adding', message);
-        console.log(data);
         setData((oldData) => [...oldData, {
             ...message,
             avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
@@ -37,7 +35,6 @@ const ChatPage = (props) => {
                 </Tooltip>
             )
         }]);
-        console.log(data);
     };
 
 
@@ -58,7 +55,6 @@ const ChatPage = (props) => {
         socket = socketIOClient(ENDPOINT);
 
         socket.on('message', (message) => {
-            console.log(message);
             addData(message);
             // const html = Mustache.render(messageTemplate, {
             //     username: message.username,

@@ -2,9 +2,10 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
+const connectDB = require('./config/db');
 // const Filter = require('bad-words');
-const { generateMessage, generateLocationMessage } = require('./utils/messages');
-const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users');
+const {generateMessage, generateLocationMessage} = require('./utils/messages');
+const {addUser, removeUser, getUser, getUsersInRoom} = require('./utils/users');
 
 const app = express();
 const server = http.createServer(app);
@@ -13,7 +14,9 @@ const io = socketio(server);
 const port = process.env.PORT || 3001;
 // const publicDirectoryPath = path.join(__dirname, '../../public');
 
+connectDB();
 // app.use(express.static(publicDirectoryPath))
+app.get('/', (req, res) => res.send('API running'));
 
 io.on('connection', (socket) => {
     console.log('New WebSocket connection');

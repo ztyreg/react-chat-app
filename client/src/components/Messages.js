@@ -7,7 +7,7 @@ const Messages = (props) => {
     return (
         <List
             className="comment-list"
-            header={`${props.data.length} replies`}
+            header={`${props.data.length} messages`}
             itemLayout="horizontal"
             dataSource={props.data}
             renderItem={item => (
