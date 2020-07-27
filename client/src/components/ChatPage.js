@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {Affix, Layout} from "antd";
+import {Affix, Layout, Tooltip} from "antd";
 import SideBar from "./SideBar";
-import Message from "./Message";
+import Messages from "./Messages";
 import socketIOClient from "socket.io-client";
 import {Input} from 'antd';
+import moment from "moment";
 
 const {Search} = Input;
 const {Content} = Layout;
@@ -14,6 +15,30 @@ let socket;
 
 const ChatPage = (props) => {
     const [collapsed, setCollapsed] = useState(false);
+    const [data, setData] = useState([]);
+
+    const addData = (message) => {
+        // console.log('adding', message);
+        console.log(data);
+        setData((oldData) => [...oldData, {
+            ...message,
+            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+            datetime: (
+                <Tooltip
+                    title={moment()
+                        .subtract(1, 'days')
+                        .format('YYYY-MM-DD HH:mm:ss')}
+                >
+                <span>
+                  {moment()
+                      .subtract(1, 'days')
+                      .fromNow()}
+                </span>
+                </Tooltip>
+            )
+        }]);
+        console.log(data);
+    };
 
 
     const onCollapse = value => {
@@ -21,7 +46,7 @@ const ChatPage = (props) => {
     };
 
     const onSearch = (value) => {
-        socket.emit('sendMessage', 'TEST', (error) => {
+        socket.emit('sendMessage', value, (error) => {
             if (error) {
                 return console.log(error)
             }
@@ -31,11 +56,20 @@ const ChatPage = (props) => {
 
     useEffect(() => {
         socket = socketIOClient(ENDPOINT);
-        socket.on("FromAPI", data => {
-            console.log(data);
+
+        socket.on('message', (message) => {
+            console.log(message);
+            addData(message);
+            // const html = Mustache.render(messageTemplate, {
+            //     username: message.username,
+            //     message: message.text,
+            //     createdAt: moment(message.createdAt).format('h:mm a')
+            // })
+            // $messages.insertAdjacentHTML('beforeend', html)
+            // autoscroll()
         });
 
-        socket.emit('join', {}, (error) => {
+        socket.emit('join', {username: 'user', room: 'room'}, (error) => {
             console.log('callback');
             // if (error) {
             //     alert(error)
@@ -54,7 +88,7 @@ const ChatPage = (props) => {
             <SideBar collapsed={collapsed} onCollapse={onCollapse}/>
             <Layout className="site-layout">
                 <Content style={{margin: '0 16px'}}>
-                    <Message/>
+                    <Messages data={data}/>
                 </Content>
                 <Affix offsetBottom={10} style={{marginLeft: '16px', marginRight: '16px'}}>
                     <Search
