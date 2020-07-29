@@ -4,6 +4,7 @@ import CreateRoomModal from "./CreateRoomModal";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import LeaveRoomModal from "./LeaveRoomModal";
+import JoinRoomModal from "./JoinRoomModal";
 
 
 const RoomTable = ({joined_room}) => {
@@ -21,10 +22,7 @@ const RoomTable = ({joined_room}) => {
     return (
         <>
             <div style={{marginBottom: 16}}>
-                <Button key={"1"} type={"primary"} style={{marginBottom: 8}} size={"large"} block
-                        disabled={joined_room}>
-                    Join New Room
-                </Button>
+                <JoinRoomModal key={"1"}/>
                 <CreateRoomModal key={"2"}/>
                 <LeaveRoomModal key={"3"}/>
             </div>

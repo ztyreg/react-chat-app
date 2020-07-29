@@ -1,14 +1,32 @@
 import api from '../utils/api';
 import {setAlert} from './alert';
 import {
-    CREATE_ROOM, GET_ROOM_MEMBERS, LEAVE_ROOM, LOAD_ROOM,
+    CREATE_ROOM, GET_ROOM_MEMBERS, JOIN_ROOM, LEAVE_ROOM, LOAD_ROOM,
     ROOM_ERROR
 } from './types';
 
-// Load User
+// Join room
+export const joinRoom = formData => async dispatch => {
+    try {
+        console.log('Joining');
+        const res = await api.post('/rooms', formData);
+        console.log('Joining');
+
+        dispatch({
+            type: JOIN_ROOM,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: ROOM_ERROR
+        });
+    }
+};
+
+// Create room
 export const createRoom = formData => async dispatch => {
     try {
-        const res = await api.post('/rooms', formData);
+        const res = await api.post('/rooms/create', formData);
 
         dispatch({
             type: CREATE_ROOM,
@@ -21,7 +39,7 @@ export const createRoom = formData => async dispatch => {
     }
 };
 
-// Load User
+// Leave room
 export const leaveRoom = formData => async dispatch => {
     try {
         const res = await api.delete('/rooms', formData);
@@ -37,11 +55,10 @@ export const leaveRoom = formData => async dispatch => {
     }
 };
 
-// Load User
+// Load room
 export const loadRoom = formData => async dispatch => {
     try {
         const res = await api.get('/rooms', formData);
-        console.log('actions/load', res.data);
 
         dispatch({
             type: LOAD_ROOM,

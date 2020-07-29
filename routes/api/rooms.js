@@ -28,10 +28,52 @@ router.get('/', auth, async (req, res) => {
 );
 
 // @route    POST api/rooms
+// @desc     Join room
+// @access   Private
+router.post('/',
+    [
+        auth,
+        check('name', 'Room name is required').not().isEmpty(),
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({errors: errors.array()});
+        }
+
+        const {name, password} = req.body;
+        const clean_password = password ? password : "";
+
+        const room_obj = await Room.findOne({name}).select('password');
+        const room_password = room_obj.password;
+
+        const isMatch = await bcrypt.compare(clean_password, room_password);
+        if (!isMatch) {
+            return res
+                .status(400)
+                .json({errors: [{msg: 'Invalid Credentials'}]});
+        }
+
+        try {
+            // find joined room
+            await User.findByIdAndUpdate(req.user.id, {
+                joined_room: {name, owner: false},
+            });
+
+            return res.status(200).send({joined_room: name, owner: false});
+
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server error');
+        }
+    }
+);
+
+// @route    POST api/rooms/create
 // @desc     Create room
 // @access   Private
 router.post(
-    '/',
+    '/create',
     [
         auth,
         check('owner_username', 'Error: owner id not provided').not().isEmpty(),
@@ -84,7 +126,7 @@ router.delete('/', auth, async (req, res) => {
         try {
             // join creator to room
             await User.findByIdAndUpdate(req.user.id, {
-                joined_rooms: null,
+                joined_room: null,
             });
 
             return res.status(200).send({joined_room: null, owner: false});
