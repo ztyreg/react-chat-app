@@ -9,6 +9,7 @@ import {addHistory} from "../../actions/rooms";
 const JoinRoomModal = ({joinRoom, username, joined_room, addHistory, avatar}) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
+    const [password, setPassword] = useState(undefined);
 
     const showModal = () => {
         setVisible(true);
@@ -16,6 +17,10 @@ const JoinRoomModal = ({joinRoom, username, joined_room, addHistory, avatar}) =>
 
     const onFinish = async (values) => {
         setConfirmLoading(true);
+
+        if (password) {
+            values.password = password ? password : "";
+        }
 
         joinRoom(values);
 
@@ -40,14 +45,14 @@ const JoinRoomModal = ({joinRoom, username, joined_room, addHistory, avatar}) =>
                 visible={visible}
                 footer={[
                     <Button key={"cancel"} type={"secondary"} onClick={handleCancel}>Cancel</Button>,
-                    <Button form="createRoomForm" key="submit" htmlType="submit" type={"primary"}
+                    <Button form="joinRoomForm" key="submit" htmlType="submit" type={"primary"}
                             loading={confirmLoading}>
                         Submit
                     </Button>
                 ]}
             >
                 <Form
-                    name="createRoomForm"
+                    name="joinRoomForm"
                     initialValues={{remember: true}}
                     onFinish={onFinish}
                 >
@@ -64,7 +69,7 @@ const JoinRoomModal = ({joinRoom, username, joined_room, addHistory, avatar}) =>
                         name="password"
                         rules={[{required: false, message: 'Please input your password!'}]}
                     >
-                        <Input.Password/>
+                        <Input.Password onChange={e => setPassword(e.target.value)}/>
                         Enter password if the chatroom is private
                     </Form.Item>
                 </Form>

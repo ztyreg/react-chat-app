@@ -48,6 +48,7 @@ router.post('/',
         const room_password = room_obj.password;
 
         const isMatch = await bcrypt.compare(clean_password, room_password);
+
         if (!isMatch) {
             return res
                 .status(400)

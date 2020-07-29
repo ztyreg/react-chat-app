@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 const CreateRoomModal = ({createRoom, owner_username, joined_room}) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
+    const [password, setPassword] = useState(undefined);
 
     const showModal = () => {
         setVisible(true);
@@ -14,6 +15,10 @@ const CreateRoomModal = ({createRoom, owner_username, joined_room}) => {
 
     const onFinish = (values) => {
         values.owner_username = owner_username;
+        if (password) {
+            values.password = password ? password : "";
+        }
+        console.log(values);
         setConfirmLoading(true);
         createRoom(values);
         setTimeout(() => {
@@ -59,9 +64,9 @@ const CreateRoomModal = ({createRoom, owner_username, joined_room}) => {
                     <Form.Item
                         label="Password"
                         name="password"
-                        rules={[{required: false, message: 'Please input your password!'}]}
+                        rules={[{message: 'Please input your password!'}]}
                     >
-                        <Input.Password/>
+                        <Input.Password onChange={e => setPassword(e.target.value)}/>
                         Leave password blank if you want to make it public
                     </Form.Item>
                 </Form>

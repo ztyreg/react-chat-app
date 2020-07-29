@@ -8,7 +8,7 @@ import {Tooltip} from "antd";
 import moment from "moment";
 import React from "react";
 
-// Join room
+// change member
 export const changeMember = members => async dispatch => {
     try {
         dispatch({
