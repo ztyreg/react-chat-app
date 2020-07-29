@@ -2,11 +2,25 @@ import api from '../utils/api';
 import {setAlert} from './alert';
 import {
     CREATE_ROOM, GET_ROOM_MEMBERS, JOIN_ROOM, LEAVE_ROOM, LOAD_ROOM,
-    ROOM_ERROR, ADD_HISTORY
+    ROOM_ERROR, ADD_HISTORY, CHANGE_MEMBER
 } from './types';
 import {Tooltip} from "antd";
 import moment from "moment";
 import React from "react";
+
+// Join room
+export const changeMember = members => async dispatch => {
+    try {
+        dispatch({
+            type: CHANGE_MEMBER,
+            payload: {members}
+        });
+    } catch (err) {
+        dispatch({
+            type: ROOM_ERROR
+        });
+    }
+};
 
 export const addHistory = (message, avatar) => async dispatch => {
     dispatch({

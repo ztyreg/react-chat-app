@@ -7,7 +7,7 @@ import {Input} from 'antd';
 import moment from "moment";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {addHistory} from "../../actions/rooms";
+import {addHistory, changeMember} from "../../actions/rooms";
 
 const {Search} = Input;
 const {Content} = Layout;
@@ -16,30 +16,8 @@ const ENDPOINT = "http://127.0.0.1:5000";
 const socket = socketIOClient(ENDPOINT);
 
 
-const ChatPage = ({avatar, username, joined_room, history, addHistory}) => {
-    const [data, setData] = useState([]);
+const ChatPage = ({avatar, username, joined_room, history, addHistory, changeMember}) => {
     const [collapsed, setCollapsed] = useState(false);
-
-
-    const addData = (message) => {
-        setData((oldData) => [...oldData, {
-            ...message,
-            avatar,
-            datetime: (
-                <Tooltip
-                    title={moment()
-                        .subtract(1, 'days')
-                        .format('YYYY-MM-DD HH:mm:ss')}
-                >
-                <span>
-                  {moment()
-                      .subtract(1, 'days')
-                      .fromNow()}
-                </span>
-                </Tooltip>
-            )
-        }]);
-    };
 
 
     const onCollapse = value => {
@@ -62,7 +40,7 @@ const ChatPage = ({avatar, username, joined_room, history, addHistory}) => {
         });
 
         socket.on('roomData', (data) => {
-            console.log(data);
+            changeMember(data.users.map((user) => user.username));
         });
 
         // CLEAN UP THE EFFECT
@@ -120,4 +98,4 @@ const mapStateToProps = state => ({
     history: state.rooms.history
 });
 
-export default connect(mapStateToProps, {addHistory})(ChatPage);
+export default connect(mapStateToProps, {addHistory, changeMember})(ChatPage);

@@ -1,9 +1,10 @@
-import {ADD_HISTORY, CREATE_ROOM, JOIN_ROOM, LEAVE_ROOM, LOAD_ROOM} from '../actions/types';
+import {ADD_HISTORY, CHANGE_MEMBER, CREATE_ROOM, JOIN_ROOM, LEAVE_ROOM, LOAD_ROOM} from '../actions/types';
 
 const initialState = {
     joined_room: null,
     owner: false,
-    history: []
+    history: [],
+    members: []
 };
 
 export default function (state = initialState, action) {
@@ -20,11 +21,14 @@ export default function (state = initialState, action) {
                 history: []
             }
         case ADD_HISTORY:
-            console.log(state.history);
-            console.log(payload);
             return {
                 ...state,
                 history: [...state.history, payload]
+            }
+        case CHANGE_MEMBER:
+            return {
+                ...state,
+                members: payload.members
             }
         default:
             return state;

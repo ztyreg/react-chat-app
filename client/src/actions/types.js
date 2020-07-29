@@ -10,6 +10,7 @@ export const LOGOUT = 'LOGOUT';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const CREATE_ROOM = 'CREATE_ROOM';
 export const LEAVE_ROOM = 'LEAVE_ROOM';
+export const CHANGE_MEMBER = 'CHANGE_MEMBER';
 export const LOAD_ROOM = 'LOAD_ROOM';
 export const JOIN_ROOM = 'JOIN_ROOM';
 export const ROOM_ERROR = 'ROOM_ERROR';

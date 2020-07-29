@@ -1,21 +1,23 @@
-import {Layout, Menu} from "antd";
+import {Button, Dropdown, Layout, Menu, Modal} from "antd";
 import {DesktopOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
 import {Link, useRouteMatch, useLocation} from "react-router-dom";
-import React from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
 import {logout} from "../../actions/auth";
 import PropTypes from 'prop-types';
+import CommentOutlined from "@ant-design/icons/lib/icons/CommentOutlined";
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
 
-const SideBar = ({collapsed, onCollapse, logout, joined_room}) => {
+const SideBar = ({collapsed, onCollapse, logout, rooms}) => {
     const pathname = useLocation().pathname;
     const match = useRouteMatch("/chat");
     const urlDefaultKeys = {
         '/rooms': '1',
         '/chat': '2'
     };
+
 
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
@@ -30,12 +32,30 @@ const SideBar = ({collapsed, onCollapse, logout, joined_room}) => {
                 <Menu.Item key="1" icon={<PieChartOutlined/>}>
                     <Link to={"/rooms"}>Rooms</Link>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<DesktopOutlined/>} disabled={!joined_room}>
+                <Menu.Item key="2" icon={<DesktopOutlined/>} disabled={!rooms.joined_room}>
                     <Link to={"/chat"}>Chat</Link>
                 </Menu.Item>
+                <SubMenu key="actions" icon={<CommentOutlined/>} title="Actions">
+                    <Menu.Item key="private">
+                        <Link >Private Chat</Link>
+                    </Menu.Item>
+                    <Menu.Item key="kick" disabled={!rooms.owner}>
+                        <Link >Kick Out User</Link>
+                    </Menu.Item>
+                    <Menu.Item key="ban" disabled={!rooms.owner}>
+                        <Link >Ban User</Link>
+                    </Menu.Item>
+                </SubMenu>
                 <SubMenu key="sub2" icon={<TeamOutlined/>} title="Members" disabled={!match}>
-                    <Menu.Item key="6">Team 1</Menu.Item>
-                    <Menu.Item key="8">Team 2</Menu.Item>
+                    {
+                        rooms.members.map((member) => {
+                            return (
+                                <Menu.Item key={member}>
+                                    {member}
+                                </Menu.Item>
+                            );
+                        })
+                    }
                 </SubMenu>
                 <SubMenu key="sub1" icon={<UserOutlined/>} title="Account">
                     <Menu.Item key="5">
@@ -50,12 +70,12 @@ const SideBar = ({collapsed, onCollapse, logout, joined_room}) => {
 SideBar.propTypes = {
     logout: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    joined_room: PropTypes.string
+    rooms: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    joined_room: state.rooms.joined_room
+    rooms: state.rooms,
 });
 
 export default connect(mapStateToProps, {logout})(SideBar);
