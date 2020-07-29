@@ -12,7 +12,6 @@ const {SubMenu} = Menu;
 
 const SideBar = ({collapsed, onCollapse, logout, rooms}) => {
     const pathname = useLocation().pathname;
-    const match = useRouteMatch("/chat");
     const urlDefaultKeys = {
         '/rooms': '1',
         '/chat': '2'
@@ -46,7 +45,7 @@ const SideBar = ({collapsed, onCollapse, logout, rooms}) => {
                         <Link >Ban User</Link>
                     </Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub2" icon={<TeamOutlined/>} title="Members" disabled={!match}>
+                <SubMenu key="sub2" icon={<TeamOutlined/>} title="Members" disabled={!rooms.joined_room}>
                     {
                         rooms.members.map((member) => {
                             return (

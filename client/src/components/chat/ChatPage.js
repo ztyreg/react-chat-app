@@ -25,6 +25,13 @@ const ChatPage = ({avatar, username, joined_room, history, addHistory, changeMem
     };
 
     const onSearch = (value) => {
+        const regex = /^\/(ban|kick|private)\s+(.+)$/;
+        const match = value.match(regex);
+        if (match) {
+            const [, command, user] = match;
+            console.log(user);
+        }
+
         socket.emit('sendMessage', value, (error) => {
             if (error) {
                 return console.log(error);
