@@ -10,7 +10,7 @@ Approvaed by Michael Casey
 
 For TA: This is a React app. We have some trouble deploying it to the server.
 If it is successful, we will update the link here.
-Otherwise, please email tianyang@wustl.edu and I can show you the demo on my laptop.
+Otherwise, please email tianyang [AT] wustl.edu and I can show you the demo on my laptop.
 (The instructor replied in one piazza post that we do not need to deploy the creative project).
 
 Go to the home page and click register to create a new account.
