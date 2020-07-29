@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Affix, Layout, Tooltip} from "antd";
+import {Affix, Layout} from "antd";
 import SideBar from "../layout/SideBar";
 import Messages from "./Messages";
 import socketIOClient from "socket.io-client";
 import {Input} from 'antd';
-import moment from "moment";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {addHistory, changeMember} from "../../actions/rooms";
@@ -16,7 +15,13 @@ const ENDPOINT = "http://127.0.0.1:5000";
 const socket = socketIOClient(ENDPOINT);
 
 
-const ChatPage = ({avatar, username, joined_room, history, addHistory, changeMember}) => {
+const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
+    const avatar = auth.user && auth.user.avatar;
+    const username = auth.user && auth.user.username;
+    const joined_room = rooms.joined_room;
+    const is_owner = rooms.owner;
+    const history = rooms.history;
+
     const [collapsed, setCollapsed] = useState(false);
 
 
@@ -25,11 +30,14 @@ const ChatPage = ({avatar, username, joined_room, history, addHistory, changeMem
     };
 
     const onSearch = (value) => {
-        const regex = /^\/(ban|kick|private)\s+(.+)$/;
-        const match = value.match(regex);
-        if (match) {
-            const [, command, user] = match;
-            console.log(user);
+        if (is_owner) {
+            const regex = /^\/(ban|kick|private)\s+(.+)$/;
+            const match = value.match(regex);
+            console.log(match);
+            if (match) {
+                const [, command, user] = match;
+                console.log(user);
+            }
         }
 
         socket.emit('sendMessage', value, (error) => {
@@ -92,17 +100,13 @@ const ChatPage = ({avatar, username, joined_room, history, addHistory, changeMem
 };
 
 ChatPage.propTypes = {
-    avatar: PropTypes.string,
-    username: PropTypes.string,
-    joined_room: PropTypes.string,
-    history: PropTypes.array,
+    auth: PropTypes.object.isRequired,
+    rooms: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-    avatar: state.auth.user && state.auth.user.avatar,
-    username: state.auth.user && state.auth.user.username,
-    joined_room: state.rooms.joined_room,
-    history: state.rooms.history
+    auth: state.auth,
+    rooms: state.rooms,
 });
 
 export default connect(mapStateToProps, {addHistory, changeMember})(ChatPage);

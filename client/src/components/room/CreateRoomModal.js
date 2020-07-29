@@ -1,4 +1,4 @@
-import {Modal, Button, Form, Input, Checkbox} from 'antd';
+import {Modal, Button, Form, Input} from 'antd';
 import React, {useState} from "react";
 import {connect} from 'react-redux';
 import {createRoom} from "../../actions/rooms";

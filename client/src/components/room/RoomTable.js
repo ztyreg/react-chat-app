@@ -1,23 +1,11 @@
-import React, {useState} from "react";
-import {Table, Button, Divider, Affix} from 'antd';
+import React from "react";
 import CreateRoomModal from "./CreateRoomModal";
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import LeaveRoomModal from "./LeaveRoomModal";
 import JoinRoomModal from "./JoinRoomModal";
 
 
-const RoomTable = ({joined_room}) => {
+const RoomTable = () => {
 
-    // start = () => {
-    //     this.setState({loading: true});
-    // ajax request after empty completing
-    // setTimeout(() => {
-    //     this.setState({
-    //         loading: false,
-    //     });
-    // }, 1000);
-    // };
 
     return (
         <>
@@ -30,13 +18,5 @@ const RoomTable = ({joined_room}) => {
     );
 };
 
-RoomTable.propTypes = {
-    joined_room: PropTypes.string
-};
 
-const mapStateToProps = state => ({
-    joined_room: state.rooms.joined_room
-});
-
-
-export default connect(mapStateToProps)(RoomTable);
+export default RoomTable;

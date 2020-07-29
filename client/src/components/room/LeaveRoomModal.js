@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Modal, Button, Space} from 'antd';
+import React from "react";
+import {Modal, Button} from 'antd';
 import {ExclamationCircleOutlined} from '@ant-design/icons';
 
 import {connect} from 'react-redux';
