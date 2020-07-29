@@ -6,19 +6,20 @@ import RoomPage from "../RoomPage";
 import Login from "../auth/Login";
 import Alert from "../layout/Alert";
 import Register from "../auth/Register";
+import PrivateRoute from "./PrivateRoute";
 
-const Routes = () => {
+const AppRoutes = () => {
     return (
         <>
             <Alert/>
             <Switch>
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/register" component={Register}/>
-                <Route exact path="/rooms" component={RoomPage}/>
-                <Route exact path="/chat" component={ChatPage}/>
+                <PrivateRoute exact path="/rooms" component={RoomPage}/>
+                <PrivateRoute exact path="/chat" component={ChatPage}/>
             </Switch>
         </>
     );
 };
 
-export default Routes;
+export default AppRoutes;

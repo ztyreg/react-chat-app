@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import Landing from "./components/layout/Landing";
-import Routes from "./components/routing/Routes";
+import AppRoutes from "./components/routing/AppRoutes";
 import {Route, BrowserRouter, Switch} from "react-router-dom";
 import {Provider} from "react-redux";
 import setAuthToken from "./utils/setAuthToken";
@@ -18,7 +18,7 @@ const App = () => {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Landing}/>
-                    <Route component={Routes}/>
+                    <Route component={AppRoutes}/>
                 </Switch>
             </BrowserRouter>
         </Provider>
