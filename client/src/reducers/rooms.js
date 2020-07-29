@@ -20,9 +20,11 @@ export default function (state = initialState, action) {
                 history: []
             }
         case ADD_HISTORY:
+            console.log(state.history);
+            console.log(payload);
             return {
                 ...state,
-                history: state.history.push(payload)
+                history: [...state.history, payload]
             }
         default:
             return state;

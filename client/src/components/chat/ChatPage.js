@@ -7,6 +7,7 @@ import {Input} from 'antd';
 import moment from "moment";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {addHistory} from "../../actions/rooms";
 
 const {Search} = Input;
 const {Content} = Layout;
@@ -15,7 +16,7 @@ const ENDPOINT = "http://127.0.0.1:5000";
 const socket = socketIOClient(ENDPOINT);
 
 
-const ChatPage = ({avatar, username, joined_room}) => {
+const ChatPage = ({avatar, username, joined_room, history, addHistory}) => {
     const [data, setData] = useState([]);
     const [collapsed, setCollapsed] = useState(false);
 
@@ -56,7 +57,7 @@ const ChatPage = ({avatar, username, joined_room}) => {
 
     useEffect(() => {
         socket.on('message', (message) => {
-            addData(message);
+            addHistory(message, avatar);
             // autoscroll()
         });
 
@@ -90,7 +91,7 @@ const ChatPage = ({avatar, username, joined_room}) => {
             <SideBar collapsed={collapsed} onCollapse={onCollapse}/>
             <Layout className="site-layout">
                 <Content style={{margin: '0 16px'}}>
-                    <Messages data={data}/>
+                    <Messages data={history}/>
                 </Content>
                 <Affix offsetBottom={10} style={{marginLeft: '16px', marginRight: '16px'}}>
                     <Search
@@ -109,12 +110,14 @@ ChatPage.propTypes = {
     avatar: PropTypes.string,
     username: PropTypes.string,
     joined_room: PropTypes.string,
+    history: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
     avatar: state.auth.user && state.auth.user.avatar,
     username: state.auth.user && state.auth.user.username,
     joined_room: state.rooms.joined_room,
+    history: state.rooms.history
 });
 
-export default connect(mapStateToProps)(ChatPage);
+export default connect(mapStateToProps, {addHistory})(ChatPage);
