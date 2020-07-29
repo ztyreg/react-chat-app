@@ -11,8 +11,7 @@ export const createRoom = formData => async dispatch => {
         const res = await api.post('/rooms', formData);
 
         dispatch({
-            type: CREATE_ROOM,
-            payload: res.data
+            type: CREATE_ROOM
         });
     } catch (err) {
         dispatch({

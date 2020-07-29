@@ -35,7 +35,7 @@ const CreateRoomModal = ({createRoom, owner_username}) => {
                 title="Create Room"
                 visible={visible}
                 footer={[
-                    <Button type={"secondary"} onClick={handleCancel}>Cancel</Button>,
+                    <Button key={"cancel"} type={"secondary"} onClick={handleCancel}>Cancel</Button>,
                     <Button form="createRoomForm" key="submit" htmlType="submit" type={"primary"}
                             loading={confirmLoading}>
                         Submit

@@ -19,15 +19,15 @@ const UserSchema = new mongoose.Schema({
     },
     owned_rooms: [
         {
-            room_id: {
-                type: Number
+            name: {
+                type: String
             }
         }
     ],
     joined_rooms: [
         {
-            room_id: {
-                type: Number
+            name: {
+                type: String
             },
             time_joined: {
                 type: Date,

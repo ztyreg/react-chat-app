@@ -7,7 +7,26 @@ const config = require('config');
 const {check, validationResult} = require('express-validator');
 const normalize = require('normalize-url');
 
+const auth = require('../../middleware/auth');
+
 const User = require('../../models/User');
+
+// @route    GET api/users/me
+// @desc     Find joined room
+// @access   Private
+router.get(
+    '/me', auth, async (req, res) => {
+        try {
+            const room = await User
+                .findById(req.user.id)
+                .select('joined_rooms owned_rooms');
+            res.json(room);
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+    }
+);
 
 // @route    POST api/users
 // @desc     Register user

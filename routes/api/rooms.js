@@ -6,25 +6,16 @@ const {check, validationResult} = require('express-validator');
 const auth = require('../../middleware/auth');
 
 const Room = require('../../models/Room');
+const User = require('../../models/User');
 
-router.get(
-    '/me', auth, async (req, res) => {
-        try {
-            const posts = await Room.find().sort({ date: -1 });
-            res.json(posts);
-        } catch (err) {
-            console.error(err.message);
-            res.status(500).send('Server Error');
-        }
-    }
-);
 
-// @route    POST api/users
-// @desc     Register user
-// @access   Public
+// @route    POST api/rooms
+// @desc     Create room
+// @access   Private
 router.post(
     '/',
     [
+        auth,
         check('owner_username', 'Error: owner id not provided').not().isEmpty(),
         check('name', 'Room name is required').not().isEmpty(),
     ],
@@ -40,6 +31,7 @@ router.post(
         const clean_password = password ? password : "";
 
         try {
+            // create room
             const room = new Room({
                 owner_username,
                 name,
@@ -53,7 +45,14 @@ router.post(
 
             await room.save();
 
-            return res.status(200).send(room.name);
+
+            // join creator to room
+            await User.findByIdAndUpdate(req.user.id, {
+                joined_rooms: [{name: room.name}],
+                owned_rooms: [{name: room.name}]
+            });
+
+            return res.status(200).send();
 
         } catch (err) {
             console.error(err.message);

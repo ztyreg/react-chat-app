@@ -5,6 +5,8 @@ import Messages from "./Messages";
 import socketIOClient from "socket.io-client";
 import {Input} from 'antd';
 import moment from "moment";
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 const {Search} = Input;
 const {Content} = Layout;
@@ -13,14 +15,14 @@ const ENDPOINT = "http://127.0.0.1:5000";
 
 let socket;
 
-const ChatPage = (props) => {
+const ChatPage = ({avatar}) => {
     const [collapsed, setCollapsed] = useState(false);
     const [data, setData] = useState([]);
 
     const addData = (message) => {
         setData((oldData) => [...oldData, {
             ...message,
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+            avatar,
             datetime: (
                 <Tooltip
                     title={moment()
@@ -99,4 +101,12 @@ const ChatPage = (props) => {
     );
 };
 
-export default ChatPage;
+ChatPage.propTypes = {
+    avatar: PropTypes.string
+};
+
+const mapStateToProps = state => ({
+    avatar: state.auth.user.avatar
+});
+
+export default connect(mapStateToProps)(ChatPage);

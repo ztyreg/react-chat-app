@@ -1,4 +1,4 @@
-import {Layout} from 'antd';
+import {Layout, Menu} from 'antd';
 import RoomTitle from "./RoomTitle";
 import RoomTable from "./RoomTable";
 import React from "react";
