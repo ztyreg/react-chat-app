@@ -18,28 +18,29 @@ const RoomSchema = new mongoose.Schema({
     },
     current_users: [
         {
-            user_id: {
-                type: Number,
+            username: {
+                type: String,
                 required: true
             },
             join_time: {
                 type: Date,
-                required: true
+                required: true,
+                default: Date.now()
             }
         }
     ],
     banned_users: [
         {
-            user_id: {
-                type: Number,
+            username: {
+                type: String,
                 required: true
             }
         }
     ],
     messages: [
         {
-            author_id: {
-                type: Number,
+            username: {
+                type: String,
                 required: true
             },
             content: {

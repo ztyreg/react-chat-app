@@ -3,11 +3,15 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const {check, validationResult} = require('express-validator');
 
+const auth = require('../../middleware/auth');
+
 const Room = require('../../models/Room');
 
 router.get(
-    '/',
-)
+    '/me', auth, async (req, res) => {
+
+    }
+);
 
 // @route    POST api/users
 // @desc     Register user
@@ -37,7 +41,8 @@ router.post(
                 owner_username,
                 name,
                 is_private,
-                password
+                password,
+                current_users: [{username: owner_username}]
             });
 
             const salt = await bcrypt.genSalt(10);

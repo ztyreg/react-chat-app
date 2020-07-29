@@ -1,5 +1,6 @@
 import React from "react";
 import {Table, Button} from 'antd';
+import CreateRoomModal from "./CreateRoomModal";
 
 const columns = [
     {
@@ -48,6 +49,7 @@ class RoomTable extends React.Component {
         this.setState({selectedRowKeys});
     };
 
+
     render() {
         const {loading, selectedRowKeys} = this.state;
         const rowSelection = {
@@ -58,9 +60,9 @@ class RoomTable extends React.Component {
         return (
             <div>
                 <div style={{marginBottom: 16}}>
-                    <Button key={"1"} type={"primary"}>&nbsp;&nbsp;Join&nbsp;&nbsp;</Button>
-                    <Button key={"2"} style={{marginLeft: 8}}>Create</Button>
-                    <Button key={"3"} style={{marginLeft: 8, float: "right"}} danger>&nbsp;Leave&nbsp;</Button>
+                    <Button key={"1"} type={"primary"}>Join New</Button>
+                    <CreateRoomModal key={"2"}/>
+                    <Button key={"3"} style={{marginLeft: 8, float: "right"}} danger>&nbsp;&nbsp;&nbsp;Leave&nbsp;&nbsp;&nbsp;</Button>
                     <span style={{marginLeft: 8}}>
             {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
           </span>

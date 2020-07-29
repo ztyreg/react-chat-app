@@ -6,9 +6,9 @@ const RoomTitle = () => {
         <div className="site-page-header-ghost-wrapper" style={{marginBottom: 16}}>
             <PageHeader
                 ghost={false}
-                onBack={() => window.history.back()}
-                title="Title"
-                subTitle="This is a subtitle"
+                // onBack={() => window.history.back()}
+                title="Rooms"
+                subTitle="Find your joined rooms here."
                 extra={[
                 ]}
             >
