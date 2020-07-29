@@ -1,11 +1,19 @@
 import {Form, Input, Button, Checkbox} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import React from "react";
+import {login} from '../../actions/auth';
+import {Redirect} from "react-router-dom";
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
-const NormalLoginForm = () => {
+const Login = ({login, isAuthenticated}) => {
     const onFinish = values => {
-        console.log('Received values of form: ', values);
+        login(values.username, values.password);
     };
+
+    if (isAuthenticated) {
+        return <Redirect to="/rooms"/>;
+    }
 
     return (
         <Form
@@ -62,4 +70,14 @@ const NormalLoginForm = () => {
     );
 };
 
-export default NormalLoginForm;
+
+Login.propTypes = {
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, {login})(Login);

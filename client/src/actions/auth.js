@@ -1,5 +1,5 @@
 import api from '../utils/api';
-import { setAlert } from './alert';
+import {setAlert} from './alert';
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
@@ -26,6 +26,7 @@ export const loadUser = () => async dispatch => {
     }
 };
 
+
 // Register User
 export const register = formData => async dispatch => {
     try {
@@ -50,8 +51,8 @@ export const register = formData => async dispatch => {
 };
 
 // Login User
-export const login = (email, password) => async dispatch => {
-    const body = { email, password };
+export const login = (username, password) => async dispatch => {
+    const body = {username, password};
 
     try {
         const res = await api.post('/auth', body);
@@ -76,4 +77,4 @@ export const login = (email, password) => async dispatch => {
 };
 
 // Logout
-export const logout = () => ({ type: LOGOUT });
+export const logout = () => ({type: LOGOUT});

@@ -5,6 +5,7 @@ const connectDB = require('./config/db');
 // const Filter = require('bad-words');
 const {generateMessage, generateLocationMessage} = require('./utils/messages');
 const {addUser, removeUser, getUser, getUsersInRoom} = require('./utils/users');
+const cors = require('cors')
 
 const app = express();
 const server = http.createServer(app);
@@ -15,9 +16,13 @@ const port = process.env.PORT || 5000;
 
 connectDB();
 
+app.use(cors());
 app.use(express.json({extended: false}));
 // app.use(express.static(publicDirectoryPath))
+
+// routes
 app.get('/', (req, res) => res.send('API running'));
+app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/users', require('./routes/api/users'));
 
 io.on('connection', (socket) => {
