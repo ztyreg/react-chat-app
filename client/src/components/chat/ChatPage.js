@@ -60,8 +60,12 @@ const ChatPage = ({avatar, username, joined_room}) => {
             // autoscroll()
         });
 
+        socket.on('roomData', (data) => {
+            console.log(data);
+        });
+
         // CLEAN UP THE EFFECT
-        return () => socket.disconnect();
+        // return () => socket.disconnect();
 
     }, []);
 
@@ -73,9 +77,10 @@ const ChatPage = ({avatar, username, joined_room}) => {
                 }
                 console.log('Joined!');
             });
-        } else {
-            socket.disconnect();
         }
+        // else {
+        //     socket.disconnect();
+        // }
 
     }, [username, joined_room]);
 
