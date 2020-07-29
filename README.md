@@ -17,6 +17,9 @@ Go to the home page and click register to create a new account.
 
 Note that only one session is allowed in one browser.
 
+Also note that to kick out/ban user, you have to be the owner of the chat.
+Once the owner leaves the chat, that chat will have no owner, even if s/he joins the chat again.
+
 ## Rubric
 
 ### Chatroom
