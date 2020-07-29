@@ -77,4 +77,8 @@ export const login = (username, password) => async dispatch => {
 };
 
 // Logout
-export const logout = () => ({type: LOGOUT});
+export const logout = () => dispatch => {
+    dispatch({
+        type: LOGOUT
+    });
+};

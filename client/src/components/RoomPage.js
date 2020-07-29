@@ -2,7 +2,7 @@ import {Layout, Menu} from 'antd';
 import Title from "./Title";
 import RoomTable from "./RoomTable";
 import React from "react";
-import SideBar from "./SideBar";
+import SideBar from "./layout/SideBar";
 
 const {Content, Footer} = Layout;
 

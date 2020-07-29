@@ -2,11 +2,14 @@ import {Layout, Menu} from "antd";
 import {DesktopOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
 import {Link, useRouteMatch, useLocation} from "react-router-dom";
 import React from "react";
+import {connect} from "react-redux";
+import {logout} from "../../actions/auth";
+import PropTypes from 'prop-types';
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
 
-const SideBar = (props) => {
+const SideBar = ({collapsed, onCollapse, logout}) => {
     const pathname = useLocation().pathname;
     const match = useRouteMatch("/chat");
     const urlDefaultKeys = {
@@ -15,7 +18,7 @@ const SideBar = (props) => {
     };
 
     return (
-        <Sider collapsible collapsed={props.collapsed} onCollapse={props.onCollapse}>
+        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
             <div>
                 <br/>
                 <br/>
@@ -35,11 +38,23 @@ const SideBar = (props) => {
                     <Menu.Item key="8">Team 2</Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub1" icon={<UserOutlined/>} title="Account">
-                    <Menu.Item key="5">Logout</Menu.Item>
+                    <Menu.Item key="5">
+                        <Link to={"/login"} onClick={logout}>Logout</Link>
+                    </Menu.Item>
                 </SubMenu>
             </Menu>
         </Sider>
     );
 };
 
-export default SideBar;
+SideBar.propTypes = {
+    logout: PropTypes.func.isRequired,
+    // auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    // auth: state.auth
+});
+
+export default connect(mapStateToProps, {logout})(SideBar);
+

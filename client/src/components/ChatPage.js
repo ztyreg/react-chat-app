@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Affix, Layout, Tooltip} from "antd";
-import SideBar from "./SideBar";
+import SideBar from "./layout/SideBar";
 import Messages from "./Messages";
 import socketIOClient from "socket.io-client";
 import {Input} from 'antd';
