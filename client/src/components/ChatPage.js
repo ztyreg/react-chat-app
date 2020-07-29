@@ -9,7 +9,7 @@ import moment from "moment";
 const {Search} = Input;
 const {Content} = Layout;
 
-const ENDPOINT = "http://127.0.0.1:3001";
+const ENDPOINT = "http://127.0.0.1:5000";
 
 let socket;
 
