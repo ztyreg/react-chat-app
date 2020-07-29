@@ -17,24 +17,22 @@ const UserSchema = new mongoose.Schema({
     avatar: {
         type: String
     },
-    owned_rooms: [
-        {
-            name: {
-                type: String
-            }
+    joined_room: {
+        name: {
+            type: String,
+            required: true
+        },
+        time_joined: {
+            type: Date,
+            default: Date.now(),
+            required: true
+        },
+        owner: {
+            type: Boolean,
+            default: false,
+            required: true
         }
-    ],
-    joined_rooms: [
-        {
-            name: {
-                type: String
-            },
-            time_joined: {
-                type: Date,
-                default: Date.now()
-            }
-        }
-    ]
+    }
 });
 
 module.exports = User = mongoose.model('user', UserSchema);

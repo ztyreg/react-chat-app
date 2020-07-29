@@ -27,7 +27,7 @@ class RoomPage extends React.Component {
                             <RoomTable/>
                         </div>
                     </Content>
-                    <Footer style={{textAlign: 'center'}}>Ant Design ©2018 Created by Ant UED</Footer>
+                    <Footer style={{textAlign: 'center'}}>© 2020 Ethan Zheng All Rights Reserved</Footer>
                 </Layout>
             </Layout>
         );

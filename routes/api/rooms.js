@@ -9,6 +9,24 @@ const Room = require('../../models/Room');
 const User = require('../../models/User');
 
 
+// @route    GET api/rooms
+// @desc     Get room
+// @access   Private
+router.get('/', auth, async (req, res) => {
+        try {
+            // find joined room
+            const room_obj = await User.findById(req.user.id).select('joined_room');
+            const room = room_obj.joined_room;
+
+            return res.status(200).send({joined_room: room.name, owner: room.owner});
+
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server error');
+        }
+    }
+);
+
 // @route    POST api/rooms
 // @desc     Create room
 // @access   Private
@@ -45,14 +63,31 @@ router.post(
 
             await room.save();
 
-
             // join creator to room
             await User.findByIdAndUpdate(req.user.id, {
-                joined_rooms: [{name: room.name}],
-                owned_rooms: [{name: room.name}]
+                joined_room: {name: room.name, owner: true}
             });
 
-            return res.status(200).send();
+            return res.status(200).send({joined_room: room.name, owner: true});
+
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server error');
+        }
+    }
+);
+
+// @route    DELETE api/rooms
+// @desc     Leave room
+// @access   Private
+router.delete('/', auth, async (req, res) => {
+        try {
+            // join creator to room
+            await User.findByIdAndUpdate(req.user.id, {
+                joined_rooms: null,
+            });
+
+            return res.status(200).send({joined_room: null, owner: false});
 
         } catch (err) {
             console.error(err.message);

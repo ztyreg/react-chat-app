@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {createRoom} from "../../actions/rooms";
 import PropTypes from "prop-types";
 
-const CreateRoomModal = ({createRoom, owner_username}) => {
+const CreateRoomModal = ({createRoom, owner_username, joined_room}) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
 
@@ -28,7 +28,8 @@ const CreateRoomModal = ({createRoom, owner_username}) => {
 
     return (
         <>
-            <Button type="secondary" onClick={showModal} size={"large"} style={{marginBottom: 8}} block>
+            <Button type="secondary" onClick={showModal} size={"large"} style={{marginBottom: 8}} block
+                    disabled={joined_room}>
                 Create New Room
             </Button>
             <Modal
@@ -71,11 +72,13 @@ const CreateRoomModal = ({createRoom, owner_username}) => {
 
 CreateRoomModal.propTypes = {
     createRoom: PropTypes.func.isRequired,
-    owner_username: PropTypes.string
+    owner_username: PropTypes.string,
+    joined_room: PropTypes.string
 };
 
 const mapStateToProps = state => ({
-    owner_username: state.auth.user.username
+    owner_username: state.auth.user && state.auth.user.username,
+    joined_room: state.rooms.joined_room
 });
 
 export default connect(mapStateToProps, {createRoom})(CreateRoomModal);

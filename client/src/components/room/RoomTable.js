@@ -3,6 +3,7 @@ import {Table, Button, Divider, Affix} from 'antd';
 import CreateRoomModal from "./CreateRoomModal";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import LeaveRoomModal from "./LeaveRoomModal";
 
 
 const RoomTable = ({joined_room}) => {
@@ -20,13 +21,12 @@ const RoomTable = ({joined_room}) => {
     return (
         <>
             <div style={{marginBottom: 16}}>
-                <Button key={"1"} type={"primary"} style={{marginBottom: 8}} size={"large"} block>
+                <Button key={"1"} type={"primary"} style={{marginBottom: 8}} size={"large"} block
+                        disabled={joined_room}>
                     Join New Room
                 </Button>
                 <CreateRoomModal key={"2"}/>
-                <Button key={"3"} size={"large"} block danger disabled={!joined_room}>
-                    Leave Current Room
-                </Button>
+                <LeaveRoomModal key={"3"}/>
             </div>
         </>
     );
@@ -37,7 +37,7 @@ RoomTable.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    joined_room: state.auth.user.joined_rooms[0]
+    joined_room: state.rooms.joined_room
 });
 
 

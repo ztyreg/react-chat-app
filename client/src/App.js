@@ -6,11 +6,13 @@ import {Provider} from "react-redux";
 import setAuthToken from "./utils/setAuthToken";
 import store from "./store";
 import {loadUser} from "./actions/auth";
+import {loadRoom} from "./actions/rooms";
 
 const App = () => {
     useEffect(() => {
         setAuthToken(localStorage.token);
         store.dispatch(loadUser());
+        store.dispatch(loadRoom());
     }, []);
 
     return (
