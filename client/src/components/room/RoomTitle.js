@@ -1,7 +1,7 @@
 import React from 'react';
 import {PageHeader} from 'antd';
 
-const Title = () => {
+const RoomTitle = () => {
     return (
         <div className="site-page-header-ghost-wrapper" style={{marginBottom: 16}}>
             <PageHeader
@@ -17,4 +17,4 @@ const Title = () => {
     );
 }
 
-export default Title;
+export default RoomTitle;

@@ -24,6 +24,7 @@ app.use(express.json({extended: false}));
 app.get('/', (req, res) => res.send('API running'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/rooms', require('./routes/api/rooms'));
 
 io.on('connection', (socket) => {
     console.log('New WebSocket connection');

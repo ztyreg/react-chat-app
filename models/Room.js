@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const RoomSchema = new mongoose.Schema({
-    owner_id: {
-        type: Number,
+    owner_username: {
+        type: String,
         required: true
     },
     name: {
         type: String,
         required: true
     },
-    private: {
+    is_private: {
         type: Boolean,
         required: true
     },

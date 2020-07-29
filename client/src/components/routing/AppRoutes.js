@@ -1,8 +1,8 @@
 import {Route, Switch} from "react-router-dom";
 import React from "react";
 import 'antd/dist/antd.css';
-import ChatPage from "../ChatPage";
-import RoomPage from "../RoomPage";
+import ChatPage from "../chat/ChatPage";
+import RoomPage from "../room/RoomPage";
 import Login from "../auth/Login";
 import Alert from "../layout/Alert";
 import Register from "../auth/Register";

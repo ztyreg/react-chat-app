@@ -1,8 +1,8 @@
-import {Layout, Menu} from 'antd';
-import Title from "./Title";
+import {Layout} from 'antd';
+import RoomTitle from "./RoomTitle";
 import RoomTable from "./RoomTable";
 import React from "react";
-import SideBar from "./layout/SideBar";
+import SideBar from "../layout/SideBar";
 
 const {Content, Footer} = Layout;
 
@@ -23,7 +23,7 @@ class RoomPage extends React.Component {
                 <Layout className="site-layout">
                     <Content style={{margin: '0 16px'}}>
                         <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
-                            <Title/>
+                            <RoomTitle/>
                             <RoomTable/>
                         </div>
                     </Content>
