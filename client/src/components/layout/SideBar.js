@@ -30,7 +30,7 @@ const SideBar = ({collapsed, onCollapse, logout, joined_room}) => {
                 <Menu.Item key="1" icon={<PieChartOutlined/>}>
                     <Link to={"/rooms"}>Rooms</Link>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<DesktopOutlined/>}>
+                <Menu.Item key="2" icon={<DesktopOutlined/>} disabled={!joined_room}>
                     <Link to={"/chat"}>Chat</Link>
                 </Menu.Item>
                 <SubMenu key="sub2" icon={<TeamOutlined/>} title="Members" disabled={!match}>

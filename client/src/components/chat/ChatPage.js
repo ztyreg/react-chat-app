@@ -7,17 +7,19 @@ import {Input} from 'antd';
 import moment from "moment";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {addHistory} from "../../actions/rooms";
 
 const {Search} = Input;
 const {Content} = Layout;
 
 const ENDPOINT = "http://127.0.0.1:5000";
 
-let socket;
 
-const ChatPage = ({avatar}) => {
+const ChatPage = ({avatar, history, username, joined_room, addHistory}) => {
     const [collapsed, setCollapsed] = useState(false);
+
     const [data, setData] = useState([]);
+    const socket = socketIOClient(ENDPOINT);
 
     const addData = (message) => {
         setData((oldData) => [...oldData, {
@@ -47,15 +49,13 @@ const ChatPage = ({avatar}) => {
     const onSearch = (value) => {
         socket.emit('sendMessage', value, (error) => {
             if (error) {
-                return console.log(error)
+                return console.log(error);
             }
             console.log('Message delivered!')
         });
     };
 
     useEffect(() => {
-        socket = socketIOClient(ENDPOINT);
-
         socket.on('message', (message) => {
             addData(message);
             // const html = Mustache.render(messageTemplate, {
@@ -77,8 +77,22 @@ const ChatPage = ({avatar}) => {
 
         // CLEAN UP THE EFFECT
         return () => socket.disconnect();
-        //
+
     }, []);
+
+    useEffect(() => {
+        if (joined_room) {
+            socket.emit('join', {username, room: joined_room}, (error) => {
+                if (error) {
+                    console.log(error);
+                }
+                console.log('Joined!');
+            });
+        } else {
+            socket.disconnect();
+        }
+
+    }, [username, joined_room]);
 
 
     return (
@@ -102,11 +116,17 @@ const ChatPage = ({avatar}) => {
 };
 
 ChatPage.propTypes = {
-    avatar: PropTypes.string
+    avatar: PropTypes.string,
+    username: PropTypes.string,
+    joined_room: PropTypes.string,
+    history: PropTypes.array
 };
 
 const mapStateToProps = state => ({
-    avatar: state.auth.user.avatar
+    avatar: state.auth.user && state.auth.user.avatar,
+    username: state.auth.user && state.auth.user.username,
+    joined_room: state.rooms.joined_room,
+    history: state.rooms.history
 });
 
-export default connect(mapStateToProps)(ChatPage);
+export default connect(mapStateToProps, {addHistory})(ChatPage);

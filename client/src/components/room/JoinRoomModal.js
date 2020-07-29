@@ -3,8 +3,10 @@ import React, {useState} from "react";
 import {connect} from 'react-redux';
 import {joinRoom} from "../../actions/rooms";
 import PropTypes from "prop-types";
+import {addHistory} from "../../actions/rooms";
 
-const JoinRoomModal = ({joinRoom, owner_username, joined_room}) => {
+
+const JoinRoomModal = ({joinRoom, username, joined_room, addHistory, avatar}) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
 
@@ -12,10 +14,11 @@ const JoinRoomModal = ({joinRoom, owner_username, joined_room}) => {
         setVisible(true);
     };
 
-    const onFinish = (values) => {
-        values.owner_username = owner_username;
+    const onFinish = async (values) => {
         setConfirmLoading(true);
+
         joinRoom(values);
+
         setTimeout(() => {
             setVisible(false);
             setConfirmLoading(false);
@@ -71,14 +74,16 @@ const JoinRoomModal = ({joinRoom, owner_username, joined_room}) => {
 };
 
 JoinRoomModal.propTypes = {
-    createRoom: PropTypes.func.isRequired,
-    owner_username: PropTypes.string,
+    avatar: PropTypes.string,
+    joinRoom: PropTypes.func.isRequired,
+    username: PropTypes.string,
     joined_room: PropTypes.string
 };
 
 const mapStateToProps = state => ({
-    owner_username: state.auth.user && state.auth.user.username,
+    avatar: state.auth.user && state.auth.user.avatar,
+    username: state.auth.user && state.auth.user.username,
     joined_room: state.rooms.joined_room
 });
 
-export default connect(mapStateToProps, {joinRoom})(JoinRoomModal);
+export default connect(mapStateToProps, {joinRoom, addHistory})(JoinRoomModal);

@@ -33,7 +33,7 @@ const LeaveRoomModal = ({leaveRoom, owner_username, joined_room}) => {
 };
 
 LeaveRoomModal.propTypes = {
-    createRoom: PropTypes.func.isRequired,
+    leaveRoom: PropTypes.func.isRequired,
     owner_username: PropTypes.string,
     joined_room: PropTypes.string
 };

@@ -2,15 +2,39 @@ import api from '../utils/api';
 import {setAlert} from './alert';
 import {
     CREATE_ROOM, GET_ROOM_MEMBERS, JOIN_ROOM, LEAVE_ROOM, LOAD_ROOM,
-    ROOM_ERROR
+    ROOM_ERROR, ADD_HISTORY
 } from './types';
+import {Tooltip} from "antd";
+import moment from "moment";
+import React from "react";
+
+export const addHistory = (message, avatar) => async dispatch => {
+    dispatch({
+        type: ADD_HISTORY,
+        payload: {
+            ...message,
+            avatar,
+            datetime: (
+                <Tooltip
+                    title={moment()
+                        .subtract(1, 'days')
+                        .format('YYYY-MM-DD HH:mm:ss')}
+                >
+                <span>
+                  {moment()
+                      .subtract(1, 'days')
+                      .fromNow()}
+                </span>
+                </Tooltip>
+            )
+        }
+    });
+};
 
 // Join room
 export const joinRoom = formData => async dispatch => {
     try {
-        console.log('Joining');
         const res = await api.post('/rooms', formData);
-        console.log('Joining');
 
         dispatch({
             type: JOIN_ROOM,
