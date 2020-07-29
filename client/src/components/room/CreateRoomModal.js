@@ -1,8 +1,10 @@
-import {Modal, Button} from 'antd';
+import {Modal, Button, Form, Input, Checkbox} from 'antd';
 import React, {useState} from "react";
+import {connect} from 'react-redux';
+import {createRoom} from "../../actions/rooms";
+import PropTypes from "prop-types";
 
-const CreateRoomModal = () => {
-    const [text, setText] = useState('TEST');
+const CreateRoomModal = ({createRoom, owner_username}) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
 
@@ -10,9 +12,11 @@ const CreateRoomModal = () => {
         setVisible(true);
     };
 
-    const handleOk = () => {
-        setText('Creating Room...');
+    const onFinish = (values) => {
+        values.owner_username = owner_username;
+        console.log(values);
         setConfirmLoading(true);
+        createRoom(values);
         setTimeout(() => {
             setVisible(false);
             setConfirmLoading(false);
@@ -31,14 +35,48 @@ const CreateRoomModal = () => {
             <Modal
                 title="Create Room"
                 visible={visible}
-                onOk={handleOk}
-                confirmLoading={confirmLoading}
-                onCancel={handleCancel}
+                footer={[
+                    <Button type={"secondary"} onClick={handleCancel}>Cancel</Button>,
+                    <Button form="createRoomForm" key="submit" htmlType="submit" type={"primary"}
+                            loading={confirmLoading}>
+                        Submit
+                    </Button>
+                ]}
             >
-                <p>{text}</p>
+                <Form
+                    name="createRoomForm"
+                    initialValues={{remember: true}}
+                    onFinish={onFinish}
+                >
+                    <Form.Item
+                        label="Name"
+                        name="name"
+                        rules={[{required: true, message: 'Please input your room name!'}]}
+                    >
+                        <Input/>
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Password"
+                        name="password"
+                        rules={[{required: false, message: 'Please input your password!'}]}
+                    >
+                        <Input.Password/>
+                        Leave password blank if you want to make it public
+                    </Form.Item>
+                </Form>
             </Modal>
         </>
     );
-}
+};
 
-export default CreateRoomModal;
+CreateRoomModal.propTypes = {
+    createRoom: PropTypes.func.isRequired,
+    owner_username: PropTypes.string
+};
+
+const mapStateToProps = state => ({
+    owner_username: state.auth.user.username
+});
+
+export default connect(mapStateToProps, {createRoom})(CreateRoomModal);

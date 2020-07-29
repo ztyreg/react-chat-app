@@ -28,26 +28,22 @@ router.post(
             return res.status(400).json({errors: errors.array()});
         }
 
-        const {owner_username, name, is_private, password} = req.body;
+        const {owner_username, name, password} = req.body;
 
-        if (is_private) {
-            if (!password) {
-                return res.status(400).json({errors: ['Password is required for private rooms']});
-            }
-        }
+        const is_private = !!password;
+        const clean_password = password ? password : "";
 
         try {
             const room = new Room({
                 owner_username,
                 name,
                 is_private,
-                password,
                 current_users: [{username: owner_username}]
             });
 
             const salt = await bcrypt.genSalt(10);
 
-            room.password = await bcrypt.hash(password, salt);
+            room.password = await bcrypt.hash(clean_password, salt);
 
             await room.save();
 
