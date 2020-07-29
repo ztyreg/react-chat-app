@@ -10,3 +10,4 @@ export const LOGOUT = 'LOGOUT';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const CREATE_ROOM = 'CREATE_ROOM';
 export const ROOM_ERROR = 'ROOM_ERROR';
+export const GET_ROOM_MEMBERS = 'GET_ROOM_MEMBERS';

@@ -9,7 +9,13 @@ const Room = require('../../models/Room');
 
 router.get(
     '/me', auth, async (req, res) => {
-
+        try {
+            const posts = await Room.find().sort({ date: -1 });
+            res.json(posts);
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
     }
 );
 
@@ -47,7 +53,7 @@ router.post(
 
             await room.save();
 
-            return res.status(200).send();
+            return res.status(200).send(room.name);
 
         } catch (err) {
             console.error(err.message);

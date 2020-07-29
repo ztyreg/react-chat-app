@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 const {Sider} = Layout;
 const {SubMenu} = Menu;
 
-const SideBar = ({collapsed, onCollapse, logout}) => {
+const SideBar = ({collapsed, onCollapse, logout, joined_room}) => {
     const pathname = useLocation().pathname;
     const match = useRouteMatch("/chat");
     const urlDefaultKeys = {
@@ -49,11 +49,13 @@ const SideBar = ({collapsed, onCollapse, logout}) => {
 
 SideBar.propTypes = {
     logout: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    joined_room: PropTypes.string
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    joined_room: state.rooms.joined_room
 });
 
 export default connect(mapStateToProps, {logout})(SideBar);

@@ -60,14 +60,14 @@ class RoomTable extends React.Component {
         return (
             <div>
                 <div style={{marginBottom: 16}}>
-                    <Button key={"1"} type={"primary"}>Join New</Button>
+                    <Button key={"1"} type={"primary"} style={{marginBottom: 8}} size={"large"} block>
+                        Join New Room
+                    </Button>
                     <CreateRoomModal key={"2"}/>
-                    <Button key={"3"} style={{marginLeft: 8, float: "right"}} danger>&nbsp;&nbsp;&nbsp;Leave&nbsp;&nbsp;&nbsp;</Button>
-                    <span style={{marginLeft: 8}}>
-            {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
-          </span>
+                    <Button key={"3"} type={"danger"} style={{marginBottom: 8}} size={"large"} block disabled={true}>
+                        Leave Current Room
+                    </Button>
                 </div>
-                <Table rowSelection={rowSelection} columns={columns} dataSource={data}/>
             </div>
         );
     }

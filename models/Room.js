@@ -7,7 +7,8 @@ const RoomSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     is_private: {
         type: Boolean,

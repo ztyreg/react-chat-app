@@ -8,7 +8,7 @@ const RoomTitle = () => {
                 ghost={false}
                 // onBack={() => window.history.back()}
                 title="Rooms"
-                subTitle="Find your joined rooms here."
+                subTitle="Find your new room here."
                 extra={[
                 ]}
             >

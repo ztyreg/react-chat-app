@@ -14,7 +14,6 @@ const CreateRoomModal = ({createRoom, owner_username}) => {
 
     const onFinish = (values) => {
         values.owner_username = owner_username;
-        console.log(values);
         setConfirmLoading(true);
         createRoom(values);
         setTimeout(() => {
@@ -29,8 +28,8 @@ const CreateRoomModal = ({createRoom, owner_username}) => {
 
     return (
         <>
-            <Button type="secondary" onClick={showModal} style={{marginLeft: 8}}>
-                &nbsp;&nbsp;Create&nbsp;&nbsp;
+            <Button type="secondary" onClick={showModal} size={"large"} style={{marginBottom: 8}} block>
+                Create New Room
             </Button>
             <Modal
                 title="Create Room"
