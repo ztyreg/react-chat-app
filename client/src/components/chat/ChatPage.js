@@ -7,19 +7,18 @@ import {Input} from 'antd';
 import moment from "moment";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {addHistory} from "../../actions/rooms";
 
 const {Search} = Input;
 const {Content} = Layout;
 
 const ENDPOINT = "http://127.0.0.1:5000";
+const socket = socketIOClient(ENDPOINT);
 
 
-const ChatPage = ({avatar, history, username, joined_room, addHistory}) => {
+const ChatPage = ({avatar, username, joined_room}) => {
+    const [data, setData] = useState([]);
     const [collapsed, setCollapsed] = useState(false);
 
-    const [data, setData] = useState([]);
-    const socket = socketIOClient(ENDPOINT);
 
     const addData = (message) => {
         setData((oldData) => [...oldData, {
@@ -58,21 +57,7 @@ const ChatPage = ({avatar, history, username, joined_room, addHistory}) => {
     useEffect(() => {
         socket.on('message', (message) => {
             addData(message);
-            // const html = Mustache.render(messageTemplate, {
-            //     username: message.username,
-            //     message: message.text,
-            //     createdAt: moment(message.createdAt).format('h:mm a')
-            // })
-            // $messages.insertAdjacentHTML('beforeend', html)
             // autoscroll()
-        });
-
-        socket.emit('join', {username: 'user', room: 'room'}, (error) => {
-            console.log('callback');
-            // if (error) {
-            //     alert(error)
-            //     location.href = '/'
-            // }
         });
 
         // CLEAN UP THE EFFECT
@@ -119,14 +104,12 @@ ChatPage.propTypes = {
     avatar: PropTypes.string,
     username: PropTypes.string,
     joined_room: PropTypes.string,
-    history: PropTypes.array
 };
 
 const mapStateToProps = state => ({
     avatar: state.auth.user && state.auth.user.avatar,
     username: state.auth.user && state.auth.user.username,
     joined_room: state.rooms.joined_room,
-    history: state.rooms.history
 });
 
-export default connect(mapStateToProps, {addHistory})(ChatPage);
+export default connect(mapStateToProps)(ChatPage);
