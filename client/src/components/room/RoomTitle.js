@@ -1,14 +1,15 @@
 import React from 'react';
 import {PageHeader} from 'antd';
+import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 
-const RoomTitle = () => {
+const RoomTitle = ({auth, rooms}) => {
     return (
         <div className="site-page-header-ghost-wrapper" style={{marginBottom: 16}}>
             <PageHeader
                 ghost={false}
-                // onBack={() => window.history.back()}
-                title="Rooms"
-                subTitle="Find your new room here."
+                title={"Hello " + auth.user.username}
+                subTitle={rooms.joined_room && "You are in room " + rooms.joined_room}
                 extra={[
                 ]}
             >
@@ -17,4 +18,14 @@ const RoomTitle = () => {
     );
 }
 
-export default RoomTitle;
+RoomTitle.propTypes = {
+    auth: PropTypes.object.isRequired,
+    rooms: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    rooms: state.rooms,
+});
+
+export default connect(mapStateToProps)(RoomTitle);

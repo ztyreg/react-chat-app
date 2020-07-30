@@ -6,7 +6,7 @@
 
 Approvaed by Michael Casey
 
-## Login Credentials
+## Landing Credentials
 
 For TA: This is a React app. We have some trouble deploying it to the server.
 If it is successful, we will update the link here.

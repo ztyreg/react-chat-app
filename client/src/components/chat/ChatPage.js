@@ -29,6 +29,10 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
         setCollapsed(value);
     };
 
+    /**
+     * Send message
+     * @param value
+     */
     const onSearch = (value) => {
         if (is_owner) {
             const regex = /^\/(ban|kick|private)\s+(.+)$/;
@@ -48,6 +52,9 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
         });
     };
 
+    /**
+     * Add message listener
+     */
     useEffect(() => {
         socket.on('message', (message) => {
             addHistory(message, avatar);
@@ -63,6 +70,9 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
 
     }, []);
 
+    /**
+     * Change room
+     */
     useEffect(() => {
         if (joined_room) {
             socket.emit('join', {username, room: joined_room}, (error) => {

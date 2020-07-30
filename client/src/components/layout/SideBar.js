@@ -58,7 +58,7 @@ const SideBar = ({collapsed, onCollapse, logout, rooms}) => {
                 </SubMenu>
                 <SubMenu key="sub1" icon={<UserOutlined/>} title="Account">
                     <Menu.Item key="5">
-                        <Link to={"/login"} onClick={logout}>Logout</Link>
+                        <Link to={"/"} onClick={logout}>Logout</Link>
                     </Menu.Item>
                 </SubMenu>
             </Menu>

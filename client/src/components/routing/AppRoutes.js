@@ -3,20 +3,19 @@ import React from "react";
 import 'antd/dist/antd.css';
 import ChatPage from "../chat/ChatPage";
 import RoomPage from "../room/RoomPage";
-import Login from "../auth/Login";
 import Alert from "../layout/Alert";
-import Register from "../auth/Register";
 import PrivateRoute from "./PrivateRoute";
+import Landing from "../auth/Landing";
 
 const AppRoutes = () => {
     return (
         <>
             <Alert/>
             <Switch>
-                <Route exact path="/login" component={Login}/>
-                <Route exact path="/register" component={Register}/>
+                <Route exact path="/" component={Landing}/>
                 <PrivateRoute exact path="/rooms" component={RoomPage}/>
                 <PrivateRoute exact path="/chat" component={ChatPage}/>
+                <Route component={Landing} />
             </Switch>
         </>
     );
