@@ -1,4 +1,5 @@
 {
   "mongoURI": "mongodb+srv://cse330:cse330@chatapp.i0k9t.mongodb.net/<dbname>?retryWrites=true&w=majority",
-  "jwtSecret": "CSE330"
+  "jwtSecret": "CSE330",
+  "serverPort": 3001
 }

@@ -1,4 +1,4 @@
-import {Modal, Button, Form, Input, Checkbox} from 'antd';
+import {Modal, Button, Form, Input} from 'antd';
 import React, {useState} from "react";
 import {connect} from 'react-redux';
 import {joinRoom} from "../../actions/rooms";
@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import {addHistory} from "../../actions/rooms";
 
 
-const JoinRoomModal = ({joinRoom, username, joined_room, addHistory, avatar}) => {
+const JoinRoomModal = ({auth, rooms, joinRoom}) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [password, setPassword] = useState(undefined);
@@ -37,7 +37,7 @@ const JoinRoomModal = ({joinRoom, username, joined_room, addHistory, avatar}) =>
     return (
         <>
             <Button type={"primary"} onClick={showModal} style={{marginBottom: 8}} size={"large"} block
-                    disabled={joined_room}>
+                    disabled={rooms.joined_room}>
                 Join New Room
             </Button>
             <Modal
@@ -79,16 +79,14 @@ const JoinRoomModal = ({joinRoom, username, joined_room, addHistory, avatar}) =>
 };
 
 JoinRoomModal.propTypes = {
-    avatar: PropTypes.string,
+    auth: PropTypes.object.isRequired,
+    rooms: PropTypes.object.isRequired,
     joinRoom: PropTypes.func.isRequired,
-    username: PropTypes.string,
-    joined_room: PropTypes.string
 };
 
 const mapStateToProps = state => ({
-    avatar: state.auth.user && state.auth.user.avatar,
-    username: state.auth.user && state.auth.user.username,
-    joined_room: state.rooms.joined_room
+    auth: state.auth,
+    rooms: state.rooms,
 });
 
 export default connect(mapStateToProps, {joinRoom, addHistory})(JoinRoomModal);

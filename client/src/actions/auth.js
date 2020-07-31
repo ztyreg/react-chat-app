@@ -38,11 +38,12 @@ export const register = formData => async dispatch => {
         });
         dispatch(loadUser());
     } catch (err) {
-        const errors = err.response.data.errors;
-
-        if (errors) {
-            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-        }
+        console.log(err);
+        // const errors = err.response.data.errors;
+        //
+        // if (errors) {
+        //     errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        // }
 
         dispatch({
             type: REGISTER_FAIL
@@ -65,11 +66,11 @@ export const login = (username, password) => async dispatch => {
         dispatch(loadUser());
     } catch (err) {
         console.log(err);
-        const errors = err.response.data.errors;
-
-        if (errors) {
-            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-        }
+        // const errors = err.response.data.errors;
+        //
+        // if (errors) {
+        //     errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        // }
 
         dispatch({
             type: LOGIN_FAIL

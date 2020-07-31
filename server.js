@@ -9,8 +9,9 @@ const cors = require('cors')
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+const config = require('config');
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || config.serverPort;
 
 connectDB();
 

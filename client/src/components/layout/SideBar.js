@@ -1,7 +1,7 @@
-import {Button, Dropdown, Layout, Menu, Modal} from "antd";
+import {Layout, Menu} from "antd";
 import {DesktopOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
-import {Link, useRouteMatch, useLocation} from "react-router-dom";
-import React, {useState} from "react";
+import {Link, useLocation} from "react-router-dom";
+import React from "react";
 import {connect} from "react-redux";
 import {logout} from "../../actions/auth";
 import PropTypes from 'prop-types';
@@ -34,7 +34,7 @@ const SideBar = ({collapsed, onCollapse, logout, rooms}) => {
                 <Menu.Item key="2" icon={<DesktopOutlined/>} disabled={!rooms.joined_room}>
                     <Link to={"/chat"}>Chat</Link>
                 </Menu.Item>
-                <SubMenu key="actions" icon={<CommentOutlined/>} title="Actions">
+                <SubMenu key="actions" icon={<CommentOutlined/>} title="Actions" disabled={!rooms.joined_room}>
                     <Menu.Item key="private">
                         <Link >Private Chat</Link>
                     </Menu.Item>
@@ -67,9 +67,9 @@ const SideBar = ({collapsed, onCollapse, logout, rooms}) => {
 };
 
 SideBar.propTypes = {
-    logout: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     rooms: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

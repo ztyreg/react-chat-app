@@ -1,6 +1,6 @@
-import {Layout, Menu} from 'antd';
+import {Layout} from 'antd';
 import RoomTitle from "./RoomTitle";
-import RoomTable from "./RoomTable";
+import RoomActions from "./RoomActions";
 import React, {useState} from "react";
 import SideBar from "../layout/SideBar";
 
@@ -9,7 +9,7 @@ const {Content, Footer} = Layout;
 const RoomPage = () => {
     const [collapsed, setCollapsed] = useState(false);
 
-    const onCollapse = collapsed => {
+    const onCollapse = () => {
         setCollapsed(true);
     };
 
@@ -20,7 +20,7 @@ const RoomPage = () => {
                 <Content style={{margin: '0 16px'}}>
                     <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
                         <RoomTitle/>
-                        <RoomTable/>
+                        <RoomActions/>
                     </div>
                 </Content>
                 <Footer style={{textAlign: 'center'}}>© 2020 Ethan Zheng All Rights Reserved</Footer>

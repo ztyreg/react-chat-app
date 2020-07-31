@@ -9,6 +9,7 @@ import {Tabs} from 'antd';
 
 const {TabPane} = Tabs;
 
+
 const Landing = ({login, register, isAuthenticated}) => {
     const onFinishLogin = values => {
         login(values.username, values.password);

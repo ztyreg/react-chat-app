@@ -4,9 +4,7 @@ import LeaveRoomModal from "./LeaveRoomModal";
 import JoinRoomModal from "./JoinRoomModal";
 
 
-const RoomTable = () => {
-
-
+const RoomActions = () => {
     return (
         <>
             <div style={{marginBottom: 16}}>
@@ -19,4 +17,4 @@ const RoomTable = () => {
 };
 
 
-export default RoomTable;
+export default RoomActions;

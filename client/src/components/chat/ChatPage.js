@@ -11,7 +11,7 @@ import {addHistory, changeMember} from "../../actions/rooms";
 const {Search} = Input;
 const {Content} = Layout;
 
-const ENDPOINT = "http://127.0.0.1:5000";
+const ENDPOINT = "http://127.0.0.1:" + process.env.REACT_APP_SERVER_PORT;
 const socket = socketIOClient(ENDPOINT);
 
 
@@ -74,6 +74,7 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
      * Change room
      */
     useEffect(() => {
+        socket.disconnect();
         if (joined_room) {
             socket.emit('join', {username, room: joined_room}, (error) => {
                 if (error) {
@@ -82,10 +83,6 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
                 console.log('Joined!');
             });
         }
-        // else {
-        //     socket.disconnect();
-        // }
-
     }, [username, joined_room]);
 
 
