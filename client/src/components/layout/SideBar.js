@@ -31,20 +31,12 @@ const SideBar = ({collapsed, onCollapse, logout, rooms}) => {
                 <Menu.Item key="1" icon={<PieChartOutlined/>}>
                     <Link to={"/rooms"}>Rooms</Link>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<DesktopOutlined/>} disabled={!rooms.joined_room}>
+                <Menu.Item key="chat" icon={<CommentOutlined/>} disabled={!rooms.joined_room}>
                     <Link to={"/chat"}>Chat</Link>
                 </Menu.Item>
-                <SubMenu key="actions" icon={<CommentOutlined/>} title="Actions" disabled={!rooms.joined_room}>
-                    <Menu.Item key="private">
-                        <Link >Private Chat</Link>
-                    </Menu.Item>
-                    <Menu.Item key="kick" disabled={!rooms.owner}>
-                        <Link >Kick Out User</Link>
-                    </Menu.Item>
-                    <Menu.Item key="ban" disabled={!rooms.owner}>
-                        <Link >Ban User</Link>
-                    </Menu.Item>
-                </SubMenu>
+                <Menu.Item key="actions" icon={<DesktopOutlined/>} disabled={!rooms.joined_room}>
+                    <Link to={"/chat"}>Actions</Link>
+                </Menu.Item>
                 <SubMenu key="sub2" icon={<TeamOutlined/>} title="Members" disabled={!rooms.joined_room}>
                     {
                         rooms.members.map((member) => {

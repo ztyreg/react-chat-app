@@ -4,7 +4,7 @@ import {LOGOUT} from '../actions/types';
 
 
 const api = axios.create({
-    baseURL: 'http://localhost:' + process.env.SERVER_PORT + '/api',
+    baseURL: 'http://localhost:' + process.env.REACT_APP_SERVER_PORT + '/api',
     headers: {
         'Content-Type': 'application/json',
     }

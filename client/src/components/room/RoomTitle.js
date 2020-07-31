@@ -8,7 +8,7 @@ const RoomTitle = ({auth, rooms}) => {
         <div className="site-page-header-ghost-wrapper" style={{marginBottom: 16}}>
             <PageHeader
                 ghost={false}
-                title={"Hello " + auth.user.username}
+                title={"Hello "+ (auth.user && auth.user.username)}
                 subTitle={rooms.joined_room && "You are in room " + rooms.joined_room}
                 extra={[
                 ]}

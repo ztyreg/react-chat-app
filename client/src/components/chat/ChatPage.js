@@ -74,7 +74,7 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
      * Change room
      */
     useEffect(() => {
-        socket.disconnect();
+        // socket.disconnect();
         if (joined_room) {
             socket.emit('join', {username, room: joined_room}, (error) => {
                 if (error) {
@@ -82,6 +82,14 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
                 }
                 console.log('Joined!');
             });
+            // socket.on('message', (message) => {
+            //     addHistory(message, avatar);
+            //     autoscroll()
+            // });
+            //
+            // socket.on('roomData', (data) => {
+            //     changeMember(data.users.map((user) => user.username));
+            // });
         }
     }, [username, joined_room]);
 
