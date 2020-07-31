@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import Landing from "../auth/Landing";
 
 const AppRoutes = () => {
+
     return (
         <>
             <Alert/>

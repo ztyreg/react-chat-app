@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
 import {Affix, Layout} from "antd";
-import SideBar from "../layout/SideBar";
 import Messages from "./Messages";
 import {Input} from 'antd';
 import PropTypes from 'prop-types';
@@ -18,12 +17,6 @@ const ChatPage = ({auth, rooms}) => {
     const username = auth.user && auth.user.username;
     const history = rooms.history;
 
-    const [collapsed, setCollapsed] = useState(false);
-
-
-    const onCollapse = value => {
-        setCollapsed(value);
-    };
 
     /**
      * Send message
@@ -50,8 +43,6 @@ const ChatPage = ({auth, rooms}) => {
 
 
     return (
-        <Layout style={{minHeight: '100vh'}}>
-            <SideBar collapsed={collapsed} onCollapse={onCollapse}/>
             <Layout className="site-layout">
                 <Content style={{margin: '0 16px'}}>
                     <Messages data={history}/>
@@ -64,7 +55,6 @@ const ChatPage = ({auth, rooms}) => {
                         onSearch={onSearch}
                     />
                 </Affix>
-            </Layout>
         </Layout>
     );
 };

@@ -9,6 +9,11 @@ const CreateRoomModal = ({createRoom, owner_username, joined_room}) => {
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [password, setPassword] = useState(undefined);
 
+    const layout = {
+        labelCol: { span: 4 },
+        wrapperCol: { span: 20 },
+    };
+
     const showModal = () => {
         setVisible(true);
     };
@@ -49,6 +54,7 @@ const CreateRoomModal = ({createRoom, owner_username, joined_room}) => {
                 ]}
             >
                 <Form
+                    {...layout}
                     name="createRoomForm"
                     initialValues={{remember: true}}
                     onFinish={onFinish}

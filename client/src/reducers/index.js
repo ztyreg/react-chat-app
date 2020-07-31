@@ -6,5 +6,5 @@ import rooms from "./rooms";
 export default combineReducers({
     alert,
     auth,
-    rooms
+    rooms,
 });

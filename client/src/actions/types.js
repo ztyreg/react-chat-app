@@ -15,4 +15,3 @@ export const LOAD_ROOM = 'LOAD_ROOM';
 export const JOIN_ROOM = 'JOIN_ROOM';
 export const ROOM_ERROR = 'ROOM_ERROR';
 export const ADD_HISTORY = 'ADD_HISTORY';
-export const GET_ROOM_MEMBERS = 'GET_ROOM_MEMBERS';

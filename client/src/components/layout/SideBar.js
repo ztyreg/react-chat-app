@@ -17,7 +17,6 @@ const SideBar = ({collapsed, onCollapse, logout, rooms}) => {
         '/chat': '2'
     };
 
-
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
             <div>
