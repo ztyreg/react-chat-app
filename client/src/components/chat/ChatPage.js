@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Affix, Layout} from "antd";
 import SideBar from "../layout/SideBar";
 import Messages from "./Messages";
 import {Input} from 'antd';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {addHistory, changeMember} from "../../actions/rooms";
 import socketIOClient from "socket.io-client";
 
 const {Search} = Input;
@@ -15,11 +14,8 @@ const ENDPOINT = "http://127.0.0.1:" + process.env.REACT_APP_SERVER_PORT;
 const socket = socketIOClient(ENDPOINT);
 
 
-const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
-    const avatar = auth.user && auth.user.avatar;
+const ChatPage = ({auth, rooms}) => {
     const username = auth.user && auth.user.username;
-    const joined_room = rooms.joined_room;
-    const is_owner = rooms.owner;
     const history = rooms.history;
 
     const [collapsed, setCollapsed] = useState(false);
@@ -52,47 +48,6 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
         });
     };
 
-    // /**
-    //  * Add message listener
-    //  */
-    // useEffect(() => {
-    //     socket.on('message', (message) => {
-    //         addHistory(message, avatar);
-    //         // autoscroll()
-    //     });
-    //
-    //     socket.on('roomData', (data) => {
-    //         changeMember(data.users.map((user) => user.username));
-    //     });
-    //
-    //     // CLEAN UP THE EFFECT
-    //     // return () => socket.disconnect();
-    //
-    // }, []);
-
-    // /**
-    //  * Change room
-    //  */
-    // useEffect(() => {
-    //     // socket.disconnect();
-    //     if (joined_room) {
-    //         socket.emit('join', {username, room: joined_room}, (error) => {
-    //             if (error) {
-    //                 console.log(error);
-    //             }
-    //             console.log('Joined!');
-    //         });
-    //         // socket.on('message', (message) => {
-    //         //     addHistory(message, avatar);
-    //         //     autoscroll()
-    //         // });
-    //         //
-    //         // socket.on('roomData', (data) => {
-    //         //     changeMember(data.users.map((user) => user.username));
-    //         // });
-    //     }
-    // }, [username, joined_room]);
-
 
     return (
         <Layout style={{minHeight: '100vh'}}>
@@ -124,4 +79,4 @@ const mapStateToProps = state => ({
     rooms: state.rooms,
 });
 
-export default connect(mapStateToProps, {addHistory, changeMember})(ChatPage);
+export default connect(mapStateToProps)(ChatPage);

@@ -1,44 +1,12 @@
 import api from '../utils/api';
-import {setAlert} from './alert';
 import {
     CREATE_ROOM, GET_ROOM_MEMBERS, JOIN_ROOM, LEAVE_ROOM, LOAD_ROOM,
     ROOM_ERROR, ADD_HISTORY, CHANGE_MEMBER
 } from './types';
-import {Tooltip} from "antd";
-import moment from "moment";
 import React from "react";
 import socket from "../socket/socket";
 import store from '../store';
 
-
-// change member
-export const changeMember = members => async dispatch => {
-
-};
-
-export const addHistory = (message, avatar) => async dispatch => {
-    console.log('addHistory');
-    dispatch({
-        type: ADD_HISTORY,
-        payload: {
-            ...message,
-            avatar,
-            datetime: (
-                <Tooltip
-                    title={moment()
-                        .subtract(1, 'days')
-                        .format('YYYY-MM-DD HH:mm:ss')}
-                >
-                <span>
-                  {moment()
-                      .subtract(1, 'days')
-                      .fromNow()}
-                </span>
-                </Tooltip>
-            )
-        }
-    });
-};
 
 // Join room
 export const joinRoom = formData => async dispatch => {
@@ -132,29 +100,20 @@ const setupRoom = (user) => {
         }
         console.log('Joined!');
     });
+
     socket.on('message', (message) => {
         console.log('RECEIVED', message);
         store.dispatch({
             type: ADD_HISTORY,
             payload: {
                 ...message,
-                avatar: user.avatar,
                 datetime: (
-                    <Tooltip
-                        title={moment()
-                            .subtract(1, 'days')
-                            .format('YYYY-MM-DD HH:mm:ss')}
-                    >
-                <span>
-                  {moment()
-                      .subtract(1, 'days')
-                      .fromNow()}
-                </span>
-                    </Tooltip>
+                    <span>
+                        {message.createdAt}
+                    </span>
                 )
             }
         });
-        // addHistory(message, user.avatar);
     });
 
     socket.on('roomData', (data) => {

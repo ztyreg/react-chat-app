@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import {connect} from 'react-redux';
 import {joinRoom} from "../../actions/rooms";
 import PropTypes from "prop-types";
-import {addHistory} from "../../actions/rooms";
 
 
 const JoinRoomModal = ({auth, rooms, joinRoom}) => {
@@ -89,4 +88,4 @@ const mapStateToProps = state => ({
     rooms: state.rooms,
 });
 
-export default connect(mapStateToProps, {joinRoom, addHistory})(JoinRoomModal);
+export default connect(mapStateToProps, {joinRoom})(JoinRoomModal);
