@@ -1,9 +1,8 @@
-const mongoose = require('mongoose');
-const config = require('config');
 const socketio = require('socket.io');
 const generateMessage = require('../utils/message');
 
 const User = require('../models/User');
+const Rooms = require('../models/Rooms');
 
 const setupSocket = async (server) => {
     const io = socketio(server);
@@ -16,21 +15,22 @@ const setupSocket = async (server) => {
                 console.log('JOIN');
                 const username = options.username;
                 const user = await User.findOne({username});
-                const room = user.joined_room.name;
+                const roomName = user.joined_room.name;
 
                 // join
-                socket.join(room);
+                socket.join(roomName);
 
                 // welcome messages
                 socket.emit('message', generateMessage('Admin', 'Welcome!'));
-                socket.broadcast.to(room).emit('message',
+                socket.broadcast.to(roomName).emit('message',
                     generateMessage('Admin', `${user.username} has joined!`));
 
                 // update user list
-                // io.to(room).emit('roomData', {
-                //     room: room,
-                //     users: getUsersInRoom(room)
-                // });
+                const room = Rooms.findOne({name: roomName});
+                io.to(roomName).emit('roomData', {
+                    room: roomName,
+                    users: getUsersInRoom(roomName)
+                });
             } catch (e) {
                 console.log(e);
             }
