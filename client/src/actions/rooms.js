@@ -58,11 +58,13 @@ export const loadRoom = formData => async dispatch => {
         });
     }
 };
+
 // Leave room
 export const leaveRoom = formData => async dispatch => {
     try {
         const res = await api.delete('/rooms', formData);
-        socket.disconnect();
+        // socket.disconnect();
+        console.log('LEAVE');
 
         dispatch({
             type: LEAVE_ROOM,
@@ -75,59 +77,13 @@ export const leaveRoom = formData => async dispatch => {
     }
 };
 
-
-// Get room members
-export const getRoomMembers = name => async dispatch => {
-    try {
-        const res = await api.get(`/rooms/${name}`);
-
-        dispatch({
-            type: GET_ROOM_MEMBERS,
-            payload: res.data
-        });
-    } catch (err) {
-        dispatch({
-            type: ROOM_ERROR,
-            payload: {msg: err.response.statusText, status: err.response.status}
-        });
-    }
-};
-
 const setupRoom = (user) => {
+    // socket.connect();
     socket.emit('join', {username: user.username}, (error) => {
         if (error) {
             console.log(error);
         }
-        console.log('Joined!');
-    });
-
-    socket.on('message', (message) => {
-        console.log('RECEIVED', message);
-        store.dispatch({
-            type: ADD_HISTORY,
-            payload: {
-                ...message,
-                datetime: (
-                    <span>
-                        {message.createdAt}
-                    </span>
-                )
-            }
-        });
-    });
-
-    socket.on('roomData', (data) => {
-        const members = data.users.map((user) => user.username);
-        try {
-            store.dispatch({
-                type: CHANGE_MEMBER,
-                payload: {members}
-            });
-        } catch (err) {
-            store.dispatch({
-                type: ROOM_ERROR
-            });
-        }
+        console.log('JOIN');
     });
 };
 

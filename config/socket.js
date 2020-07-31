@@ -1,8 +1,9 @@
 const socketio = require('socket.io');
 const generateMessage = require('../utils/message');
+const getUsersInRoom = require('../utils/user');
 
 const User = require('../models/User');
-const Rooms = require('../models/Rooms');
+const Room = require('../models/Room');
 
 const setupSocket = async (server) => {
     const io = socketio(server);
@@ -26,10 +27,11 @@ const setupSocket = async (server) => {
                     generateMessage('Admin', `${user.username} has joined!`));
 
                 // update user list
-                const room = Rooms.findOne({name: roomName});
+                const room = await Room.findOne({name: roomName});
+                const users = room.current_users.map((user_obj) => user_obj.username);
                 io.to(roomName).emit('roomData', {
                     room: roomName,
-                    users: getUsersInRoom(roomName)
+                    users
                 });
             } catch (e) {
                 console.log(e);
@@ -50,7 +52,7 @@ const setupSocket = async (server) => {
 
 
         socket.on('disconnect', () => {
-            console.log('Left!');
+            console.log('LEAVE');
             // if (user) {
             //     io.to(user.room).emit('message', generateMessage('Admin', `${user.username} has left!`));
             //     io.to(user.room).emit('roomData', {
