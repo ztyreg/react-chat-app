@@ -22,9 +22,8 @@ socket.on('message', (message) => {
 });
 
 socket.on('roomData', (data) => {
-    console.log(data);
     const members = data.users;
-    console.log(members);
+    console.log('MEMBER', members);
     try {
         store.dispatch({
             type: CHANGE_MEMBER,

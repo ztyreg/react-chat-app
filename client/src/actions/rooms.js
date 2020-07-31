@@ -1,7 +1,7 @@
 import api from '../utils/api';
 import {
-    CREATE_ROOM, GET_ROOM_MEMBERS, JOIN_ROOM, LEAVE_ROOM, LOAD_ROOM,
-    ROOM_ERROR, ADD_HISTORY, CHANGE_MEMBER
+    CREATE_ROOM, JOIN_ROOM, LEAVE_ROOM, LOAD_ROOM,
+    ROOM_ERROR
 } from './types';
 import React from "react";
 import socket from "../socket/socket";
@@ -63,7 +63,8 @@ export const loadRoom = formData => async dispatch => {
 export const leaveRoom = formData => async dispatch => {
     try {
         const res = await api.delete('/rooms', formData);
-        console.log('LEAVE');
+        const user = res.data;
+        leaveSocket(user);
 
         dispatch({
             type: LEAVE_ROOM,
@@ -77,7 +78,7 @@ export const leaveRoom = formData => async dispatch => {
 };
 
 const joinSocket = (user) => {
-    socket.emit('join', {username: user.username}, (error) => {
+    socket.emit('join', user, (error) => {
         if (error) {
             console.log(error);
         }
@@ -86,7 +87,7 @@ const joinSocket = (user) => {
 };
 
 const leaveSocket = (user) => {
-    socket.emit('leave', {username: user.username}, (error) => {
+    socket.emit('leave', user, (error) => {
         if (error) {
             console.log(error);
         }

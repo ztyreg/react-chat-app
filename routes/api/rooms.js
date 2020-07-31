@@ -60,9 +60,7 @@ router.post('/',
                 joined_room: {name, owner: false},
             });
             const user = await User.findById(req.user.id);
-            console.log(user);
             room_obj.current_users.push({username: user.username});
-            console.log('CURRENT_USERS', room_obj.current_users);
             await Room.findByIdAndUpdate(room_obj._id, {current_users: room_obj.current_users})
 
             return res.status(200).send(user);
@@ -129,17 +127,17 @@ router.post(
 // @access   Private
 router.delete('/', auth, async (req, res) => {
         try {
-
             const user = await User.findById(req.user.id);
             const room = await Room.findOne({name: user.joined_room.name});
-            room.current_users.filter((user_obj) => user_obj.username !== user.username);
-            await Room.findOneAndUpdate({name: user.joined_room.name}, room.current_users);
+            await Room.findOneAndUpdate({name: user.joined_room.name},
+                {current_users: room.current_users.filter((user_obj) => user_obj.username !== user.username)}
+            );
 
             await User.findByIdAndUpdate(req.user.id, {
                 joined_room: null,
             });
 
-            return res.status(200).send({joined_room: null, owner: false});
+            return res.status(200).send(user);
 
         } catch (err) {
             console.error(err.message);

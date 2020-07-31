@@ -24,8 +24,6 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/rooms', require('./routes/api/rooms'));
 
 
-
-
 server.listen(port, () => {
     console.log(`Server is up on port ${port}!`)
 })

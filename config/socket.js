@@ -14,6 +14,11 @@ const setupSocket = async (server) => {
         socket.on('join', async (options, callback) => {
             try {
                 console.log('JOIN');
+                if (!options.joined_room) {
+                    // no room joined
+                    callback();
+                    return;
+                }
                 const username = options.username;
                 const user = await User.findOne({username});
                 const roomName = user.joined_room.name;
@@ -27,11 +32,9 @@ const setupSocket = async (server) => {
                     generateMessage('Admin', `${user.username} has joined!`));
 
                 // update user list
-                const room = await Room.findOne({name: roomName});
-                const users = room.current_users.map((user_obj) => user_obj.username);
                 io.to(roomName).emit('roomData', {
                     room: roomName,
-                    users
+                    users: await getUsersInRoom(roomName)
                 });
             } catch (e) {
                 console.log(e);
@@ -52,15 +55,24 @@ const setupSocket = async (server) => {
 
 
         socket.on('disconnect', () => {
+            console.log('DISCONNECT');
+        });
+
+        socket.on('leave', async (options, callback) => {
             console.log('LEAVE');
-            // if (user) {
-            //     io.to(user.room).emit('message', generateMessage('Admin', `${user.username} has left!`));
-            //     io.to(user.room).emit('roomData', {
-            //         room: user.room,
-            //         users: getUsersInRoom(user.room)
-            //     });
-            // }
-        })
+            try {
+                const roomName = options.joined_room.name;
+                io.to(roomName).emit('message',
+                    generateMessage('Admin', `${options.username} has left!`));
+                io.to(roomName).emit('roomData', {
+                    room: roomName,
+                    users: await getUsersInRoom(roomName)
+                });
+            } catch (e) {
+                console.log(e);
+            }
+            callback();
+        });
     })
 };
 
