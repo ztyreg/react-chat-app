@@ -12,7 +12,7 @@ import store from '../store';
 export const joinRoom = formData => async dispatch => {
     try {
         const res = await api.post('/rooms', formData);
-        setupRoom(res.data);
+        joinSocket(res.data);
 
         dispatch({
             type: JOIN_ROOM,
@@ -29,7 +29,7 @@ export const joinRoom = formData => async dispatch => {
 export const createRoom = formData => async dispatch => {
     try {
         const res = await api.post('/rooms/create', formData);
-        setupRoom(res.data);
+        joinSocket(res.data);
 
         dispatch({
             type: CREATE_ROOM,
@@ -46,7 +46,7 @@ export const createRoom = formData => async dispatch => {
 export const loadRoom = formData => async dispatch => {
     try {
         const res = await api.get('/rooms', formData);
-        setupRoom(res.data);
+        joinSocket(res.data);
 
         dispatch({
             type: LOAD_ROOM,
@@ -63,7 +63,6 @@ export const loadRoom = formData => async dispatch => {
 export const leaveRoom = formData => async dispatch => {
     try {
         const res = await api.delete('/rooms', formData);
-        // socket.disconnect();
         console.log('LEAVE');
 
         dispatch({
@@ -77,13 +76,21 @@ export const leaveRoom = formData => async dispatch => {
     }
 };
 
-const setupRoom = (user) => {
-    // socket.connect();
+const joinSocket = (user) => {
     socket.emit('join', {username: user.username}, (error) => {
         if (error) {
             console.log(error);
         }
         console.log('JOIN');
+    });
+};
+
+const leaveSocket = (user) => {
+    socket.emit('leave', {username: user.username}, (error) => {
+        if (error) {
+            console.log(error);
+        }
+        console.log('LEAVE');
     });
 };
 

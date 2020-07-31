@@ -43,7 +43,7 @@ router.post('/',
         const {name, password} = req.body;
         const clean_password = password ? password : "";
 
-        const room_obj = await Room.findOne({name}).select('password');
+        const room_obj = await Room.findOne({name});
         const room_password = room_obj.password;
 
         const isMatch = await bcrypt.compare(clean_password, room_password);
@@ -59,8 +59,11 @@ router.post('/',
             await User.findByIdAndUpdate(req.user.id, {
                 joined_room: {name, owner: false},
             });
-
             const user = await User.findById(req.user.id);
+            console.log(user);
+            room_obj.current_users.push({username: user.username});
+            console.log('CURRENT_USERS', room_obj.current_users);
+            await Room.findByIdAndUpdate(room_obj._id, {current_users: room_obj.current_users})
 
             return res.status(200).send(user);
 
@@ -126,7 +129,12 @@ router.post(
 // @access   Private
 router.delete('/', auth, async (req, res) => {
         try {
-            // join creator to room
+
+            const user = await User.findById(req.user.id);
+            const room = await Room.findOne({name: user.joined_room.name});
+            room.current_users.filter((user_obj) => user_obj.username !== user.username);
+            await Room.findOneAndUpdate({name: user.joined_room.name}, room.current_users);
+
             await User.findByIdAndUpdate(req.user.id, {
                 joined_room: null,
             });

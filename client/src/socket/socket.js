@@ -14,8 +14,8 @@ socket.on('message', (message) => {
             ...message,
             datetime: (
                 <span>
-                        {message.createdAt}
-                    </span>
+                    {message.createdAt}
+                </span>
             )
         }
     });
