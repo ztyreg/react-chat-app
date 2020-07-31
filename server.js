@@ -1,8 +1,9 @@
 const http = require('http');
 const express = require('express');
-const connectDB = require('./config/db');
 const cors = require('cors')
-const moment = require('moment');
+
+const connectDB = require('./config/db');
+const setupSocket = require('./config/socket');
 
 const app = express();
 const server = http.createServer(app);

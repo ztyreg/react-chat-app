@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const config = require('config');
 const socketio = require('socket.io');
+const generateMessage = require('../utils/message');
 
-const User = require('./models/User');
+const User = require('../models/User');
 
 const setupSocket = async (server) => {
     const io = socketio(server);
@@ -26,10 +27,10 @@ const setupSocket = async (server) => {
                     generateMessage('Admin', `${user.username} has joined!`));
 
                 // update user list
-                io.to(room).emit('roomData', {
-                    room: room,
-                    users: getUsersInRoom(room)
-                });
+                // io.to(room).emit('roomData', {
+                //     room: room,
+                //     users: getUsersInRoom(room)
+                // });
             } catch (e) {
                 console.log(e);
             }
@@ -43,12 +44,7 @@ const setupSocket = async (server) => {
             const avatar = user.avatar;
             console.log('SEND\n', '\tUser:', username, '\n\tRoom:', room, '\n\tMessage:', message);
 
-            io.to(room).emit('message', {
-                author: username,
-                content: message,
-                avatar,
-                createdAt: moment().calendar()
-            });
+            io.to(room).emit('message', generateMessage(username, message, avatar));
             callback();
         });
 
