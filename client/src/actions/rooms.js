@@ -5,7 +5,6 @@ import {
 } from './types';
 import React from "react";
 import socket from "../socket/socket";
-import store from '../store';
 
 
 // Join room

@@ -4,13 +4,10 @@ import Messages from "./Messages";
 import {Input} from 'antd';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import socketIOClient from "socket.io-client";
+import socket from "../../socket/socket";
 
 const {Search} = Input;
 const {Content} = Layout;
-
-const ENDPOINT = "http://127.0.0.1:" + process.env.REACT_APP_SERVER_PORT;
-const socket = socketIOClient(ENDPOINT);
 
 
 const ChatPage = ({auth, rooms}) => {
