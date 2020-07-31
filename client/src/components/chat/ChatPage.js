@@ -20,16 +20,6 @@ const ChatPage = ({auth, rooms}) => {
      * @param message
      */
     const onSearch = (message) => {
-        // if (is_owner) {
-        //     const regex = /^\/(ban|kick|private)\s+(.+)$/;
-        //     const match = value.match(regex);
-        //     console.log(match);
-        //     if (match) {
-        //         const [, command, user] = match;
-        //         console.log(user);
-        //     }
-        // }
-
         socket.emit('sendMessage', {username, message}, (error) => {
             if (error) {
                 return console.log(error);
@@ -40,18 +30,18 @@ const ChatPage = ({auth, rooms}) => {
 
 
     return (
-            <Layout className="site-layout">
-                <Content style={{margin: '0 16px'}}>
-                    <Messages data={history}/>
-                </Content>
-                <Affix offsetBottom={10} style={{marginLeft: '16px', marginRight: '16px'}}>
-                    <Search
-                        placeholder="Enter your message here"
-                        enterButton="Send"
-                        size="medium"
-                        onSearch={onSearch}
-                    />
-                </Affix>
+        <Layout className="site-layout">
+            <Content style={{margin: '0 16px'}}>
+                <Messages data={history}/>
+            </Content>
+            <Affix offsetBottom={10} style={{marginLeft: '16px', marginRight: '16px'}}>
+                <Search
+                    placeholder="Enter your message here"
+                    enterButton="Send"
+                    size="medium"
+                    onSearch={onSearch}
+                />
+            </Affix>
         </Layout>
     );
 };

@@ -1,17 +1,20 @@
 const socketio = require('socket.io');
-const generateMessage = require('../utils/message');
+const {generateMessage, generatePrivateMessage} = require('../utils/message');
 const getUsersInRoom = require('../utils/user');
 
 const User = require('../models/User');
 const Room = require('../models/Room');
 
+
 const setupSocket = async (server) => {
     const io = socketio(server);
+    const ids = new Map();
 
     io.on('connection', (socket) => {
         console.log('New WebSocket connection');
 
         socket.on('join', async (options, callback) => {
+            ids.set(options.username, socket.id);
             try {
                 console.log('JOIN');
                 if (!options.joined_room) {
@@ -50,6 +53,20 @@ const setupSocket = async (server) => {
             console.log('SEND\n', '\tUser:', username, '\n\tRoom:', room, '\n\tMessage:', message);
 
             io.to(room).emit('message', generateMessage(username, message, avatar));
+            callback();
+        });
+
+        socket.on('sendPrivateMessage', async ({username, member, message}, callback) => {
+            const user = await User.findOne({username});
+            const room = user.joined_room.name;
+            const avatar = user.avatar;
+            console.log('SEND PRIVATE\n',
+                '\tUser:', username,
+                '\n\tRoom:', room,
+                '\n\tMember: ', member,
+                '\n\tMessage:', message);
+
+            io.to(ids.get(member)).emit('message', generatePrivateMessage(username, message, avatar));
             callback();
         });
 

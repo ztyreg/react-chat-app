@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {logout} from "../../actions/auth";
 import PropTypes from 'prop-types';
 import CommentOutlined from "@ant-design/icons/lib/icons/CommentOutlined";
+import PrivateMessageModal from "./PrivateMessageModal";
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
@@ -33,15 +34,12 @@ const SideBar = ({collapsed, onCollapse, logout, rooms}) => {
                 <Menu.Item key="chat" icon={<CommentOutlined/>} disabled={!rooms.joined_room}>
                     <Link to={"/chat"}>Chat</Link>
                 </Menu.Item>
-                <Menu.Item key="actions" icon={<DesktopOutlined/>} disabled={!rooms.joined_room}>
-                    <Link to={"/chat"}>Actions</Link>
-                </Menu.Item>
                 <SubMenu key="sub2" icon={<TeamOutlined/>} title="Members" disabled={!rooms.joined_room}>
                     {
                         rooms.members.map((member) => {
                             return (
                                 <Menu.Item key={member}>
-                                    {member}
+                                    <PrivateMessageModal member={member}/>
                                 </Menu.Item>
                             );
                         })

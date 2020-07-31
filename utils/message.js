@@ -7,4 +7,11 @@ const generateMessage = (author, content, avatar) => ({
     createdAt: moment().calendar()
 });
 
-module.exports = generateMessage;
+const generatePrivateMessage = (author, content, avatar) => ({
+    author,
+    content: '[Private] ' + content,
+    avatar,
+    createdAt: moment().calendar()
+});
+
+module.exports = {generateMessage, generatePrivateMessage};
