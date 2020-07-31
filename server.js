@@ -25,61 +25,64 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/rooms', require('./routes/api/rooms'));
 
+const User = require('./models/User');
+
 io.on('connection', (socket) => {
     console.log('New WebSocket connection');
 
-    socket.on('join', (options, callback) => {
-        console.log('Joined!');
-        const {error, user} = addUser({id: socket.id, ...options});
+    socket.on('join', async (options, callback) => {
+        try {
+            console.log('JOIN');
+            const username = options.username;
+            const user = await User.findOne({username});
+            const room = user.joined_room.name;
+            // const {error, user} = addUser({id: socket.id, ...options});
 
-        if (error) {
-            return callback(error);
+            // if (error) {
+            //     return callback(error);
+            // }
+
+            socket.join(room);
+
+            // socket.emit('message', generateMessage('Admin', 'Welcome!'));
+            // socket.broadcast.emit('message',
+            //     generateMessage('Admin', `A new user has joined!`));
+            socket.broadcast.to(room).emit('message',
+                generateMessage('Admin', `${user.username} has joined!`));
+
+            // update user list
+            io.to(room).emit('roomData', {
+                room: room,
+                users: getUsersInRoom(room)
+            });
+        } catch (e) {
+            console.log(e);
         }
 
-        socket.join(user.room);
-
-        // socket.emit('message', generateMessage('Admin', 'Welcome!'));
-        // socket.broadcast.emit('message',
-        //     generateMessage('Admin', `A new user has joined!`));
-        socket.broadcast.to(user.room).emit('message',
-            generateMessage('Admin', `${user.username} has joined!`));
-
-        // update user list
-        io.to(user.room).emit('roomData', {
-            room: user.room,
-            users: getUsersInRoom(user.room)
-        });
-
         callback();
     });
 
-    socket.on('sendMessage', (message, callback) => {
-        console.log('Got', message);
-        const user = getUser(socket.id);
+    socket.on('sendMessage', async ({username, message}, callback) => {
+        const user = await User.findOne({username});
+        const room = user.joined_room.name;
+        console.log('SEND\n', '\tUser:', username, '\n\tRoom:', room, '\n\tMessage:', message);
 
-        io.to(user.room).emit('message', generateMessage(user.username, message));
+        io.to(room).emit('message', generateMessage(username, message));
         callback();
     });
 
-    socket.on('sendPrivateMessage', (message, callback) => {
-        console.log('Got private', message);
-        const user = getUser(socket.id);
-
-        io.to(user.room).emit('message', generateMessage(user.username, message));
-        callback();
-    });
 
     socket.on('disconnect', () => {
         console.log('Left!');
-        const user = removeUser(socket.id);
-
-        if (user) {
-            io.to(user.room).emit('message', generateMessage('Admin', `${user.username} has left!`));
-            io.to(user.room).emit('roomData', {
-                room: user.room,
-                users: getUsersInRoom(user.room)
-            });
-        }
+        // const user = removeUser(socket.id);
+        //
+        // if (user) {
+        //     io.to(user.room).emit('message', generateMessage('Admin', `${user.username} has left!`));
+        //     io.to(user.room).emit('roomData', {
+        //         room: user.room,
+        //         users: getUsersInRoom(user.room)
+        //     });
+        // }
     })
 })
 

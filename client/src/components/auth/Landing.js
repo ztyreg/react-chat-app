@@ -1,4 +1,4 @@
-import {Form, Input, Button, Checkbox, Space, Card, Row} from 'antd';
+import {Form, Input, Button, Card, Row} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import React from "react";
 import {login, register} from '../../actions/auth';

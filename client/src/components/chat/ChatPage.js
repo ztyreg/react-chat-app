@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 import {Affix, Layout} from "antd";
 import SideBar from "../layout/SideBar";
 import Messages from "./Messages";
-import socketIOClient from "socket.io-client";
 import {Input} from 'antd';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {addHistory, changeMember} from "../../actions/rooms";
+import socketIOClient from "socket.io-client";
 
 const {Search} = Input;
 const {Content} = Layout;
@@ -31,20 +31,20 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
 
     /**
      * Send message
-     * @param value
+     * @param message
      */
-    const onSearch = (value) => {
-        if (is_owner) {
-            const regex = /^\/(ban|kick|private)\s+(.+)$/;
-            const match = value.match(regex);
-            console.log(match);
-            if (match) {
-                const [, command, user] = match;
-                console.log(user);
-            }
-        }
+    const onSearch = (message) => {
+        // if (is_owner) {
+        //     const regex = /^\/(ban|kick|private)\s+(.+)$/;
+        //     const match = value.match(regex);
+        //     console.log(match);
+        //     if (match) {
+        //         const [, command, user] = match;
+        //         console.log(user);
+        //     }
+        // }
 
-        socket.emit('sendMessage', value, (error) => {
+        socket.emit('sendMessage', {username, message}, (error) => {
             if (error) {
                 return console.log(error);
             }
@@ -52,46 +52,46 @@ const ChatPage = ({auth, rooms, addHistory, changeMember}) => {
         });
     };
 
-    /**
-     * Add message listener
-     */
-    useEffect(() => {
-        socket.on('message', (message) => {
-            addHistory(message, avatar);
-            // autoscroll()
-        });
+    // /**
+    //  * Add message listener
+    //  */
+    // useEffect(() => {
+    //     socket.on('message', (message) => {
+    //         addHistory(message, avatar);
+    //         // autoscroll()
+    //     });
+    //
+    //     socket.on('roomData', (data) => {
+    //         changeMember(data.users.map((user) => user.username));
+    //     });
+    //
+    //     // CLEAN UP THE EFFECT
+    //     // return () => socket.disconnect();
+    //
+    // }, []);
 
-        socket.on('roomData', (data) => {
-            changeMember(data.users.map((user) => user.username));
-        });
-
-        // CLEAN UP THE EFFECT
-        // return () => socket.disconnect();
-
-    }, []);
-
-    /**
-     * Change room
-     */
-    useEffect(() => {
-        // socket.disconnect();
-        if (joined_room) {
-            socket.emit('join', {username, room: joined_room}, (error) => {
-                if (error) {
-                    console.log(error);
-                }
-                console.log('Joined!');
-            });
-            // socket.on('message', (message) => {
-            //     addHistory(message, avatar);
-            //     autoscroll()
-            // });
-            //
-            // socket.on('roomData', (data) => {
-            //     changeMember(data.users.map((user) => user.username));
-            // });
-        }
-    }, [username, joined_room]);
+    // /**
+    //  * Change room
+    //  */
+    // useEffect(() => {
+    //     // socket.disconnect();
+    //     if (joined_room) {
+    //         socket.emit('join', {username, room: joined_room}, (error) => {
+    //             if (error) {
+    //                 console.log(error);
+    //             }
+    //             console.log('Joined!');
+    //         });
+    //         // socket.on('message', (message) => {
+    //         //     addHistory(message, avatar);
+    //         //     autoscroll()
+    //         // });
+    //         //
+    //         // socket.on('roomData', (data) => {
+    //         //     changeMember(data.users.map((user) => user.username));
+    //         // });
+    //     }
+    // }, [username, joined_room]);
 
 
     return (

@@ -15,10 +15,9 @@ const User = require('../../models/User');
 router.get('/', auth, async (req, res) => {
         try {
             // find joined room
-            const room_obj = await User.findById(req.user.id).select('joined_room');
-            const room = room_obj.joined_room;
+            const user = await User.findById(req.user.id);
 
-            return res.status(200).send({joined_room: room.name, owner: room.owner});
+            return res.status(200).send(user);
 
         } catch (err) {
             console.error(err.message);
@@ -61,7 +60,9 @@ router.post('/',
                 joined_room: {name, owner: false},
             });
 
-            return res.status(200).send({joined_room: name, owner: false});
+            const user = await User.findById(req.user.id);
+
+            return res.status(200).send(user);
 
         } catch (err) {
             console.error(err.message);
