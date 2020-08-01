@@ -1,7 +1,8 @@
-# React Chat
+# React Chat App
 
 This is a React chat App
 
+## Login Credentials
 URL: https://intense-temple-81745.herokuapp.com
 
 Notes:
@@ -15,11 +16,23 @@ it means the operation is not permitted
 (for example, registering with duplicated username or joining a non-existing room)
 
 
-Features:
-* User registration and login
-* Create, join, and leave rooms
-* Create private rooms with a password
-* User avatars are created using the `gavatar` library
-* Click user name in the 'Members' dropdown menu to send private messages
+## Features
+**Administration of user created chat rooms:**
+  - Users can create chat rooms with an arbitrary room name
+  - Users can join an arbitrary chat room 
+  - Users can leave a chat room
+  - The chat room displays all users currently in the room
+  - A private room can be created that is password protected
+
+**Messaging:**
+  * A user's message shows their username and is sent to everyone in the room
+  * Users can send private messages to another user in the same room
+  * Users have avatars (Gravatar library: grab avatar linked with the registration email)
+  * Message shows time
+  
+**Other features**
+* JSON web tokens are stored in local storage, so the session is kept even if the user closes the tab. This also means that users can only start one session in one browser
+* Mobile-friendly
+* When a new user joins, or an existing user leaves, there will be a message in the chatroom
 
 
