@@ -5,6 +5,9 @@ This is a React chat App
 URL: https://intense-temple-81745.herokuapp.com
 
 Notes:
+* Tester accounts:
+    * 222222 (password: 222222)
+    * 333333 (password: 333333)
 * Error messages to be done. Currently, if 
 there are no effects after clicking a certain button,
 it means the operation is not permitted
