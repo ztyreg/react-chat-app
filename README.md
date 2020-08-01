@@ -11,7 +11,7 @@ Notes:
 * Error messages to be done. Currently, if 
 there are no effects after clicking a certain button,
 it means the operation is not permitted
-(for example, duplicated username)
+(for example, registering with duplicated username or joining a non-existing room)
 * You can only open one session in each browser
 
 Features:
