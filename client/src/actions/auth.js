@@ -8,6 +8,7 @@ import {
     LOGIN_FAIL,
     LOGOUT
 } from './types';
+import {loadRoom} from "./rooms";
 
 // Load User
 export const loadUser = () => async dispatch => {
@@ -36,6 +37,7 @@ export const register = formData => async dispatch => {
             payload: res.data
         });
         dispatch(loadUser());
+        dispatch(loadRoom());
     } catch (err) {
         console.log(err);
         // const errors = err.response.data.errors;
@@ -63,6 +65,7 @@ export const login = (username, password) => async dispatch => {
         });
 
         dispatch(loadUser());
+        dispatch(loadRoom());
     } catch (err) {
         console.log(err);
         // const errors = err.response.data.errors;
