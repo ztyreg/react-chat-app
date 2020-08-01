@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3bbfc6c3-676f-4376-a18e-28d57c9a8971" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/socket/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/socket/socket.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,14 +131,7 @@
       <workItem from="1596155062957" duration="31575000" />
       <workItem from="1596213862206" duration="1363000" />
       <workItem from="1596231711875" duration="4906000" />
-      <workItem from="1596313859550" duration="2532000" />
-    </task>
-    <task id="LOCAL-00002" summary="Update">
-      <created>1595659052694</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1595659052694</updated>
+      <workItem from="1596313859550" duration="3788000" />
     </task>
     <task id="LOCAL-00003" summary="Update">
       <created>1595660568688</created>
@@ -475,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596315530854</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="add proxy">
+      <created>1596316679020</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1596316679020</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,7 +501,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add leave room" />
     <MESSAGE value="add join room" />
     <MESSAGE value="chat page ok" />
     <MESSAGE value="fix chat page bug" />
@@ -525,7 +525,8 @@
     <MESSAGE value="fix register and modal" />
     <MESSAGE value="change package.json" />
     <MESSAGE value="change port" />
-    <option name="LAST_COMMIT_MESSAGE" value="change port" />
+    <MESSAGE value="add proxy" />
+    <option name="LAST_COMMIT_MESSAGE" value="add proxy" />
   </component>
   <component name="WindowStateProjectService">
     <state x="886" y="687" key="#Notifications" timestamp="1596062753466">
@@ -540,10 +541,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="741" y="571" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596186039156" />
-    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596315530763">
+    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596316678873">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596315530763" />
+    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596316678873" />
     <state width="1985" height="570" key="GridCell.Tab.0.bottom" timestamp="1596062642593">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
@@ -628,18 +629,18 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="1262" y="530" key="VCS.ChangeListViewerDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596313579882" />
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596315549238">
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596316692998">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596315549238" />
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596316692998" />
     <state x="925" y="558" key="VcsDiffUtil.ChangesDialog" timestamp="1595646593386">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="925" y="558" key="VcsDiffUtil.ChangesDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1595646593386" />
-    <state x="450" y="572" width="604" height="490" key="find.popup" timestamp="1596316166938">
+    <state x="450" y="572" width="604" height="490" key="find.popup" timestamp="1596316608263">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="450" y="572" width="604" height="490" key="find.popup/0.23.3008.1590@0.23.3008.1590" timestamp="1596316166938" />
+    <state x="450" y="572" width="604" height="490" key="find.popup/0.23.3008.1590@0.23.3008.1590" timestamp="1596316608263" />
     <state x="543" y="742" key="git4idea.rebase.GitUnstructuredEditor" timestamp="1595639180708">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>

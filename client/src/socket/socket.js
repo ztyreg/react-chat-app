@@ -5,7 +5,7 @@ import React from "react";
 
 // const port = process.env.PORT | process.env.REACT_APP_SERVER_PORT;
 // const ENDPOINT = 'http://localhost:' + port;
-const ENDPOINT = '/';
+const ENDPOINT = 'https://intense-temple-81745.herokuapp.com/';
 const socket = io(ENDPOINT);
 
 socket.on('message', (message) => {

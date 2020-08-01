@@ -20,6 +20,7 @@ const UserSchema = new mongoose.Schema({
     joined_room: {
         name: {
             type: String,
+            default: null
         },
         time_joined: {
             type: Date,
@@ -29,7 +30,8 @@ const UserSchema = new mongoose.Schema({
             type: Boolean,
             default: false,
         },
-        required: false
+        required: false,
+        default: null
     }
 });
 
