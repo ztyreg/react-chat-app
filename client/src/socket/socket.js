@@ -3,8 +3,9 @@ import store from "../store";
 import {ADD_HISTORY, CHANGE_MEMBER, ROOM_ERROR} from "../actions/types";
 import React from "react";
 
-const port = process.env.PORT | process.env.REACT_APP_SERVER_PORT;
-const ENDPOINT = 'http://localhost:' + port;
+// const port = process.env.PORT | process.env.REACT_APP_SERVER_PORT;
+// const ENDPOINT = 'http://localhost:' + port;
+const ENDPOINT = '/';
 const socket = io(ENDPOINT);
 
 socket.on('message', (message) => {

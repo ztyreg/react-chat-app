@@ -2,10 +2,10 @@ import axios from 'axios';
 import store from '../store';
 import {LOGOUT} from '../actions/types';
 
-const port = process.env.PORT | process.env.REACT_APP_SERVER_PORT;
+// const port = process.env.PORT | process.env.REACT_APP_SERVER_PORT;
 
 const api = axios.create({
-    baseURL: 'http://localhost:' + port + '/api',
+    baseURL: '/api',
     headers: {
         'Content-Type': 'application/json',
     }
