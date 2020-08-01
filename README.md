@@ -26,7 +26,7 @@ it means the operation is not permitted
 
 **Messaging:**
   * A user's message shows their username and is sent to everyone in the room
-  * Users can send private messages to another user in the same room
+  * Users can send private messages to another user in the same room (click the username in the 'Members' dropdown menu)
   * Users have avatars (Gravatar library: grab avatar linked with the registration email)
   * Message shows time
   
