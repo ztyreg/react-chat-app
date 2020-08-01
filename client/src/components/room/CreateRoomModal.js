@@ -69,7 +69,6 @@ const CreateRoomModal = ({createRoom, owner_username, joined_room}) => {
 
                     <Form.Item
                         label="Password"
-                        name="password"
                         rules={[{message: 'Please input your password!'}]}
                     >
                         <Input.Password onChange={e => setPassword(e.target.value)}/>

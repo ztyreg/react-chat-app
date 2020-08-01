@@ -5,7 +5,7 @@ import {joinRoom} from "../../actions/rooms";
 import PropTypes from "prop-types";
 
 
-const JoinRoomModal = ({auth, rooms, joinRoom}) => {
+const JoinRoomModal = ({rooms, joinRoom}) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [password, setPassword] = useState(undefined);
@@ -71,7 +71,6 @@ const JoinRoomModal = ({auth, rooms, joinRoom}) => {
 
                     <Form.Item
                         label="Password"
-                        name="password"
                         rules={[{required: false, message: 'Please input your password!'}]}
                     >
                         <Input.Password onChange={e => setPassword(e.target.value)}/>

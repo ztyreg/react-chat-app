@@ -19,14 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bbfc6c3-676f-4376-a18e-28d57c9a8971" name="Default Changelist" comment="add private">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/production.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/config/config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/socket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+    <list default="true" id="3bbfc6c3-676f-4376-a18e-28d57c9a8971" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/layout/PrivateMessageModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/PrivateMessageModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/room/CreateRoomModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/room/CreateRoomModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/room/JoinRoomModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/room/JoinRoomModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +134,7 @@
       <workItem from="1596155062957" duration="31575000" />
       <workItem from="1596213862206" duration="1363000" />
       <workItem from="1596231711875" duration="4906000" />
+      <workItem from="1596313859550" duration="241000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1595644709052</created>
@@ -459,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596192133006</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="add production.json">
+      <created>1596313908395</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1596313908395</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,7 +484,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add create room modal" />
     <MESSAGE value="complete create room" />
     <MESSAGE value="change layout" />
     <MESSAGE value="add avatar" />
@@ -503,7 +508,8 @@
     <MESSAGE value="consistent sidebar" />
     <MESSAGE value="change socket" />
     <MESSAGE value="add private" />
-    <option name="LAST_COMMIT_MESSAGE" value="add private" />
+    <MESSAGE value="add production.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="add production.json" />
   </component>
   <component name="WindowStateProjectService">
     <state x="886" y="687" key="#Notifications" timestamp="1596062753466">
@@ -518,10 +524,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="741" y="571" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596186039156" />
-    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596213441900">
+    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596313908207">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596213441900" />
+    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596313908207" />
     <state width="1985" height="570" key="GridCell.Tab.0.bottom" timestamp="1596062642593">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>

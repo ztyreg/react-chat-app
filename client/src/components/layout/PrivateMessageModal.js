@@ -1,13 +1,12 @@
 import {Modal, Button, Form, Input} from 'antd';
 import React, {useState} from "react";
 import {connect} from 'react-redux';
-import {joinRoom} from "../../actions/rooms";
 import PropTypes from "prop-types";
 import socket from "../../socket/socket";
 import {Link} from "react-router-dom";
 
 
-const PrivateMessageModal = ({member, auth, rooms}) => {
+const PrivateMessageModal = ({member, auth}) => {
     const [message, setMessage] = useState(null);
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);

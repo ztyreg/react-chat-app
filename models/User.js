@@ -20,18 +20,16 @@ const UserSchema = new mongoose.Schema({
     joined_room: {
         name: {
             type: String,
-            required: true
         },
         time_joined: {
             type: Date,
             default: Date.now(),
-            required: true
         },
         owner: {
             type: Boolean,
             default: false,
-            required: true
-        }
+        },
+        required: false
     }
 });
 
