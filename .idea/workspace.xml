@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3bbfc6c3-676f-4376-a18e-28d57c9a8971" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/layout/PrivateMessageModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/PrivateMessageModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/room/CreateRoomModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/room/CreateRoomModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/room/JoinRoomModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/room/JoinRoomModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +131,7 @@
       <workItem from="1596155062957" duration="31575000" />
       <workItem from="1596213862206" duration="1363000" />
       <workItem from="1596231711875" duration="4906000" />
-      <workItem from="1596313859550" duration="241000" />
+      <workItem from="1596313859550" duration="557000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1595644709052</created>
@@ -465,7 +462,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596313908395</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="fix register and modal">
+      <created>1596314160192</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1596314160192</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +488,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="complete create room" />
     <MESSAGE value="change layout" />
     <MESSAGE value="add avatar" />
     <MESSAGE value="add leave room" />
@@ -509,7 +512,8 @@
     <MESSAGE value="change socket" />
     <MESSAGE value="add private" />
     <MESSAGE value="add production.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="add production.json" />
+    <MESSAGE value="fix register and modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix register and modal" />
   </component>
   <component name="WindowStateProjectService">
     <state x="886" y="687" key="#Notifications" timestamp="1596062753466">
@@ -524,10 +528,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="741" y="571" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596186039156" />
-    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596313908207">
+    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596314160087">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596313908207" />
+    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596314160087" />
     <state width="1985" height="570" key="GridCell.Tab.0.bottom" timestamp="1596062642593">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
@@ -612,10 +616,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="1262" y="530" key="VCS.ChangeListViewerDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596313579882" />
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596062814647">
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596314269916">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596062814647" />
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596314269916" />
     <state x="925" y="558" key="VcsDiffUtil.ChangesDialog" timestamp="1595646593386">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
