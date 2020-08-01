@@ -31,6 +31,7 @@ it means the operation is not permitted
   * Message shows time
   
 **Other features**
+* Real-time updates using React (this includes the messages, the list of users in room etc.)
 * JSON web tokens are stored in local storage, so the session is kept even if the user closes the tab. This also means that users can only start one session in one browser
 * Mobile-friendly
 * When a new user joins, or an existing user leaves, there will be a message in the chatroom
