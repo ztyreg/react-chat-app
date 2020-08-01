@@ -5,6 +5,7 @@ This is a React chat App
 URL: https://intense-temple-81745.herokuapp.com
 
 Notes:
+* You can only open one session in each browser
 * Tester accounts:
     * chatapptester1 (password: testerpwd1)
     * chatapptester2 (password: testerpwd2)
@@ -12,7 +13,7 @@ Notes:
 there are no effects after clicking a certain button,
 it means the operation is not permitted
 (for example, registering with duplicated username or joining a non-existing room)
-* You can only open one session in each browser
+
 
 Features:
 * User registration and login
