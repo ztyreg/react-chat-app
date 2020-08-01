@@ -3,7 +3,6 @@ const {generateMessage, generatePrivateMessage} = require('../utils/message');
 const getUsersInRoom = require('../utils/user');
 
 const User = require('../models/User');
-const Room = require('../models/Room');
 
 
 const setupSocket = async (server) => {
