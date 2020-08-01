@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bbfc6c3-676f-4376-a18e-28d57c9a8971" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,21 +130,7 @@
       <workItem from="1596155062957" duration="31575000" />
       <workItem from="1596213862206" duration="1363000" />
       <workItem from="1596231711875" duration="4906000" />
-      <workItem from="1596313859550" duration="5936000" />
-    </task>
-    <task id="LOCAL-00005" summary="Update">
-      <created>1595705163055</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1595705163055</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Update">
-      <created>1595793583690</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1595793583690</updated>
+      <workItem from="1596313859550" duration="6180000" />
     </task>
     <task id="LOCAL-00007" summary="configure server">
       <created>1595806285881</created>
@@ -476,7 +461,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596319992863</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="update README.md">
+      <created>1596320802646</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1596320802646</updated>
+    </task>
+    <task id="LOCAL-00055" summary="update README.md">
+      <created>1596320842446</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1596320842446</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,7 +500,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix chat page bug" />
     <MESSAGE value="add history" />
     <MESSAGE value="add buttons" />
     <MESSAGE value="update README" />
@@ -526,7 +524,8 @@
     <MESSAGE value="add proxy" />
     <MESSAGE value="change joined_room default" />
     <MESSAGE value="change User schema to fix state error" />
-    <option name="LAST_COMMIT_MESSAGE" value="change User schema to fix state error" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
   <component name="WindowStateProjectService">
     <state x="886" y="687" key="#Notifications" timestamp="1596062753466">
@@ -541,10 +540,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="741" y="571" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596186039156" />
-    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596319992756">
+    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596320842361">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596319992756" />
+    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596320842361" />
     <state width="1985" height="570" key="GridCell.Tab.0.bottom" timestamp="1596062642593">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
@@ -629,10 +628,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="1262" y="530" key="VCS.ChangeListViewerDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596313579882" />
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596320000838">
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596320853049">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596320000838" />
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596320853049" />
     <state x="925" y="558" key="VcsDiffUtil.ChangesDialog" timestamp="1595646593386">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
