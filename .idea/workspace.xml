@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bbfc6c3-676f-4376-a18e-28d57c9a8971" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,21 +131,10 @@
       <workItem from="1596155062957" duration="31575000" />
       <workItem from="1596213862206" duration="1363000" />
       <workItem from="1596231711875" duration="4906000" />
-      <workItem from="1596313859550" duration="6180000" />
-    </task>
-    <task id="LOCAL-00007" summary="configure server">
-      <created>1595806285881</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1595806285881</updated>
-    </task>
-    <task id="LOCAL-00008" summary="send message">
-      <created>1595807505484</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1595807505484</updated>
+      <workItem from="1596313859550" duration="6304000" />
+      <workItem from="1596321738593" duration="11000" />
+      <workItem from="1596330905405" duration="19000" />
+      <workItem from="1596332445777" duration="614000" />
     </task>
     <task id="LOCAL-00009" summary="sync message">
       <created>1595818276117</created>
@@ -475,7 +465,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596320842446</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="update README.md">
+      <created>1596321132770</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1596321132770</updated>
+    </task>
+    <task id="LOCAL-00057" summary="update README.md">
+      <created>1596321167023</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1596321167023</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -540,10 +544,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="741" y="571" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596186039156" />
-    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596320842361">
+    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596321166905">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596320842361" />
+    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596321166905" />
     <state width="1985" height="570" key="GridCell.Tab.0.bottom" timestamp="1596062642593">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
@@ -628,10 +632,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="1262" y="530" key="VCS.ChangeListViewerDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596313579882" />
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596320853049">
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596321743699">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596320853049" />
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596321743699" />
     <state x="925" y="558" key="VcsDiffUtil.ChangesDialog" timestamp="1595646593386">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
