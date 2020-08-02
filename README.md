@@ -40,7 +40,7 @@ it means the operation is not permitted
 
 ## Screenshots
 
-<img src="https://github.com/ztyreg/react-chat-app/blob/master/screenshot1.png" width="670">
+<img src="https://github.com/ztyreg/react-chat-app/blob/master/screenshot1.png" width="680">
 <img src="https://github.com/ztyreg/react-chat-app/blob/master/screenshot2.png" width="1200">
 
 
