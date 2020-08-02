@@ -5,7 +5,7 @@ This is a React chat App
 ## Login Credentials
 URL: https://intense-temple-81745.herokuapp.com
 
-** The server is down from 5am - 11am GMT **
+__The server is down from 5am - 11am GMT__
 
 Notes:
 * You can only open one session in each browser
