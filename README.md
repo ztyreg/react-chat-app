@@ -7,6 +7,8 @@ URL: https://intense-temple-81745.herokuapp.com __(The server is down from 5am -
 
 Notes:
 * You can only open one session in each browser
+* Sample chat room
+    * 3 (The name is just 3, no password)
 * Tester accounts:
     * chatapptester1 (password: testerpwd1)
     * chatapptester2 (password: testerpwd2)
