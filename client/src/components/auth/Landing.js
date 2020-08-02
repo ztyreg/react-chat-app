@@ -6,6 +6,7 @@ import {Redirect} from "react-router-dom";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Tabs} from 'antd';
+import MailOutlined from "@ant-design/icons/lib/icons/MailOutlined";
 
 const {TabPane} = Tabs;
 
@@ -107,7 +108,7 @@ const Landing = ({login, register, isAuthenticated}) => {
                                 ]}
                             >
                                 <Input
-                                    prefix={<UserOutlined className="site-form-item-icon"/>}
+                                    prefix={<MailOutlined className="site-form-item-icon"/>}
                                     type="email"
                                     placeholder="Email"
                                 />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Affix, Layout} from "antd";
 import Messages from "./Messages";
 import {Input} from 'antd';
@@ -13,13 +13,14 @@ const {Content} = Layout;
 const ChatPage = ({auth, rooms}) => {
     const username = auth.user && auth.user.username;
     const history = rooms.history;
+    const [message, setMessage] = useState(undefined);
 
 
     /**
      * Send message
-     * @param message
      */
-    const onSearch = (message) => {
+    const onSearch = () => {
+        setMessage(undefined);
         socket.emit('sendMessage', {username, message}, (error) => {
             if (error) {
                 return console.log(error);
@@ -39,7 +40,9 @@ const ChatPage = ({auth, rooms}) => {
                     placeholder="Enter your message here"
                     enterButton="Send"
                     size="medium"
+                    value={message}
                     onSearch={onSearch}
+                    onChange={e => setMessage(e.target.value)}
                 />
             </Affix>
         </Layout>
