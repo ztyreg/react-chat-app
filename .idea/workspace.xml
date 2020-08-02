@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bbfc6c3-676f-4376-a18e-28d57c9a8971" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="3bbfc6c3-676f-4376-a18e-28d57c9a8971" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,14 +131,7 @@
       <workItem from="1596313859550" duration="6304000" />
       <workItem from="1596321738593" duration="11000" />
       <workItem from="1596330905405" duration="19000" />
-      <workItem from="1596332445777" duration="614000" />
-    </task>
-    <task id="LOCAL-00009" summary="sync message">
-      <created>1595818276117</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1595818276117</updated>
+      <workItem from="1596332445777" duration="675000" />
     </task>
     <task id="LOCAL-00010" summary="add api">
       <created>1595885404004</created>
@@ -479,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596321167023</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="update README.md">
+      <created>1596333117176</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1596333117177</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,10 +541,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="741" y="571" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596186039156" />
-    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596321166905">
+    <state x="580" y="394" key="CommitChangelistDialog2" timestamp="1596333116982">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596321166905" />
+    <state x="580" y="394" key="CommitChangelistDialog2/0.23.3008.1590@0.23.3008.1590" timestamp="1596333116982" />
     <state width="1985" height="570" key="GridCell.Tab.0.bottom" timestamp="1596062642593">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
@@ -632,10 +629,10 @@
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
     <state x="1262" y="530" key="VCS.ChangeListViewerDialog/0.23.3008.1590@0.23.3008.1590" timestamp="1596313579882" />
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596321743699">
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2" timestamp="1596333120738">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
-    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596321743699" />
+    <state x="353" y="558" key="Vcs.Push.Dialog.v2/0.23.3008.1590@0.23.3008.1590" timestamp="1596333120738" />
     <state x="925" y="558" key="VcsDiffUtil.ChangesDialog" timestamp="1595646593386">
       <screen x="0" y="23" width="3008" height="1590" />
     </state>
