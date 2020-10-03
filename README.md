@@ -4,14 +4,14 @@ This is a React chat App
 
 ## Login Credentials
 URL: https://intense-temple-81745.herokuapp.com __(The server is down from 5am - 11am GMT)__
-
+Tester accounts:
+* **chatapptester1** (password: **testerpwd1**)
+* **chatapptester2** (password: **testerpwd2**)
+    
 Notes:
 * You can only open one session in each browser
 * Sample chat room
     * 3 (The name is just 3, no password)
-* Tester accounts:
-    * chatapptester1 (password: testerpwd1)
-    * chatapptester2 (password: testerpwd2)
 * Error messages to be done. Currently, if 
 there are no effects after clicking a certain button,
 it means the operation is not permitted
