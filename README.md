@@ -7,6 +7,7 @@ URL: https://intense-temple-81745.herokuapp.com __(The server is down from 5am -
 Tester accounts:
 * **chatapptester1** (password: **testerpwd1**)
 * **chatapptester2** (password: **testerpwd2**)
+* **Heroku lets the app "sleep" if no one visits the website for some time, so you might need to wait for 1 min for the app to load**
     
 Notes:
 * You can only open one session in each browser
